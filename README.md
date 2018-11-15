@@ -2,7 +2,7 @@
 
 Wine quality
 
-[](https://media.giphy.com/media/zx6Tsme145Eoo/giphy.gif)
+![](https://media.giphy.com/media/zx6Tsme145Eoo/giphy.gif)
 
 # Project Proposal
 
