@@ -25,7 +25,10 @@ The data set we work on is [Red Wine Quality](https://www.kaggle.com/uciml/red-w
 The scripts for loading data can be found [here](https://github.com/UBC-MDS/DSCI_522_jchen9314_apchiodo/tree/master/scripts).
 
 ## Question
-The question we want to solve is which physiochemical characteristics of wine the strongest predictors of red wine quality are.
+The question we want to solve is: 
+
+**Which physiochemical characteristics of wine are the strongest predictors of wine quality?**
+
 This is a predictive question.
 
 ## Plan of analysis
