@@ -1,36 +1,31 @@
-# DSCI_522_jchen9314_apchiodo
-
-Wine quality
+# Red Wine Quality Predictor
 
 ![](https://media.giphy.com/media/zx6Tsme145Eoo/giphy.gif)
 
-# Project Proposal
+## Team members
 
-## Identify data set, question, & plan of action for analysis to answer that question
+| Name  | Github username | 
+| :------: | :----------: |
+| Jingyun Chen | jchen9314 |  
+| Anthony Chiodo |apchiodo|
 
-1. Choose a public data set from the web that you are interested in to carry out a small data analysis. You may also use any data set we have previously worked with in MDS. **Prove to us that you can load the data set into R or Python** (this could be demonstrating by writing a script that downloads the data and saves a snippet of it, for example).
+## Data set
+The data set we work on is [Red Wine Quality](https://www.kaggle.com/uciml/red-wine-quality-cortez-et-al-2009) from [Kaggle Dataset](https://www.kaggle.com/datasets).This data set is related to red variants of the Portuguese "Vinho Verde" wine.
 
-> - [Scripts for loading data](https://github.com/UBC-MDS/DSCI_522_jchen9314_apchiodo/tree/master/scripts)
-> - load data using R `scripts\import_data.R`
-> - load data using python `scripts\import_data.py`
+### Proof we can load data
 
-2. With that data set, identify a question you would like to ask from it that could be answered by some simple analysis and visualization (more on this below). State what kind of question it is (it should be one of the 6 types discussed in lecture 1).
+![](./images/load_data_py.png)
 
-> - Which physiochemical characteristics of wine are the strongest predictors of wine quality?
-> - Question type: Predictive
+The scripts for loading data can be found [here](https://github.com/UBC-MDS/DSCI_522_jchen9314_apchiodo/tree/master/scripts).
 
-3. Make a plan of how you will analyze the data (report an estimate and confidence intervals? hypothesis test? classification with a decision tree?). Choose something you know how to do (report an estimate and confidence intervals, a two-group hypothesis), or will learn how to do in the first week of block 3 (ANOVA, classification with a decision tree).
+## Question
+The question we want to solve is which physiochemical characteristics of wine the strongest predictors of red wine quality are.
+This is a predictive question.
 
-> **Classification with a decision tree**
-> - perform EDA; get familiar with data set
-> - split data set into training and test sets
-> - separate features of interest from target
-> - apply decision tree classifcation to training set using `scikit-learn`
-> - evaluate how our model performed on test set
-> - tease out physiochemical characteristics most important for classifying a good wine
+## Plan of analysis
+We will firstly get familiar with data set by performing some exploratory data analysis. Then, we will split data set into training and test sets. Also, we will separate features of interest from target. We will then apply decision tree classification to the training set using `scikit-learn` and play with some hyperparameters. Finally, we will evaluate how our model performed on the test set and tease out the most important physiochemical characteristics for classifying a good wine.
 
-4. Suggest how you might summarize the data to show this as a table or a number, as well as how you might show this as a visualization.
+## Summarize the data
 
-> - the output of the machine learning excercise will give us feature importance in determining wine quality, which we can show in tabular form
-> - To visualize, we can create an ordered bar chart of each feature.
+The output of the machine learning excercise will give us feature importance in determining wine quality, which we can show in tabular form. To visualize, we can create an ordered bar chart of each feature.
 
