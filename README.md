@@ -14,7 +14,13 @@ The data set we work on is [Red Wine Quality](https://www.kaggle.com/uciml/red-w
 
 ### Proof we can load data
 
+**Python**
+
 ![](./images/load_data_py.png)
+
+**R**
+
+![](./images/load_data_R.png)
 
 The scripts for loading data can be found [here](https://github.com/UBC-MDS/DSCI_522_jchen9314_apchiodo/tree/master/scripts).
 
