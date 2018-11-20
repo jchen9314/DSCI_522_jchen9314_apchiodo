@@ -9,6 +9,10 @@
 | Jingyun Chen | jchen9314 |  
 | Anthony Chiodo |apchiodo|
 
+## Release
+
+**v1.0:** https://github.com/UBC-MDS/DSCI_522_jchen9314_apchiodo/releases/tag/v1.0
+
 ## Data set
 The data set we work on is [Red Wine Quality](https://www.kaggle.com/uciml/red-wine-quality-cortez-et-al-2009) from [Kaggle Dataset](https://www.kaggle.com/datasets).This data set is related to red variants of the Portuguese "Vinho Verde" wine.
 
@@ -16,11 +20,11 @@ The data set we work on is [Red Wine Quality](https://www.kaggle.com/uciml/red-w
 
 **Python**
 
-![](./images/load_data_py.png)
+![](./img/load_data_py.png)
 
 **R**
 
-![](./images/load_data_R.png)
+![](./img/load_data_R.png)
 
 The scripts for loading data can be found [here](https://github.com/UBC-MDS/DSCI_522_jchen9314_apchiodo/tree/master/scripts).
 
