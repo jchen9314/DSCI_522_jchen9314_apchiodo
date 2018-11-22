@@ -5,17 +5,23 @@
 # Import the red wine data set and re-encode the 'quality' variable to only have
 # two targets
 #
-# Usage: Rscript src/clean_data.R
+# Usage: Rscript src/clean_data.R data/winequality-red.csv data/cleaned_winequality-red.csv
 
+# load libraries
 library(readr)
 library(dplyr)
+
+# read in command line arguments
+args <- commandArgs(trailingOnly = TRUE)
+input_file <- args[1]
+output_file <- args[2]
 
 # define main function
 
 main <- function(){
   
   # read in data
-  data <- read_csv('data/winequality-red.csv')
+  data <- read_csv(input_file)
   
   # print out mean of variable of interest
   data <- data %>%
@@ -32,7 +38,7 @@ main <- function(){
     mutate_at(vars(quality), as.integer)
   
   # print(head(test))
-  write_csv(data, "data/cleaned_winequality-red.csv")
+  write_csv(data, output_file)
   
 }
 
