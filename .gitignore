@@ -1,5 +1,12 @@
+<<<<<<< HEAD
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+=======
 **.ipynb_checkpoints/
 .RData
 .Rhistory
 **.DS_Store
 *.ipynb_checkpoints/*
+>>>>>>> ed3f83eec656d46726787860439031ec0ff2fdf4
