@@ -25,7 +25,7 @@ main <- function(){
   
   # print out mean of variable of interest
   data <- data %>%
-    mutate(quality_ = case_when(
+    mutate(quality = case_when(
       quality == 3 ~ 1,
       quality == 4 ~ 2,
       quality == 5 ~ 3,
@@ -34,7 +34,7 @@ main <- function(){
       quality == 8 ~ 6,
       TRUE ~ NA_real_
     )) %>%
-    mutate(quality = if_else(quality_ <= 3, 0, 1)) %>%
+    mutate(quality = if_else(quality <= 3, 0, 1)) %>%
     mutate_at(vars(quality), as.integer)
   
   # print(head(test))
