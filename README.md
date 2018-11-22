@@ -26,7 +26,7 @@ The data set we work on is [Red Wine Quality](https://www.kaggle.com/uciml/red-w
 
 ![](./img/load_data_R.png)
 
-The scripts for loading data can be found [here](https://github.com/UBC-MDS/DSCI_522_jchen9314_apchiodo/tree/master/scripts).
+The scripts for loading data can be found [here](https://github.com/UBC-MDS/DSCI_522_jchen9314_apchiodo/tree/master/src).
 
 ## Question
 The question we want to solve is: 
