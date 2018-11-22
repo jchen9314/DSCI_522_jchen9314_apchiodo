@@ -2,14 +2,14 @@
 # wine_quality_predicton.py
 # Jingyun Chen, Nov 22, 2018
 #
-# This script import cleaned dataset from a .csv files and output the cross validation performance on train set
-# as a .csv file and the prediciton summary table as a .csv file. 
+# This script import cleaned dataset from a .csv files and output an cross validation performance on train set
+# as a .csv file, a prediciton summary table as a .csv file, and a feature importance table as a .csv file. 
 # This script takes the path to the input file, and two paths/filenames 
 # where to write the file to and what to call it.
 #
 # Dependencies: argparse, pandas, numpy, sklearn
 #
-# Usage: python src/wine_quality_pred.py data/cleaned_winequality-red.csv results/cross_validation_scores.csv results/pred_summary_table.csv
+# Usage: python src/wine_quality_pred.py data/cleaned_winequality-red.csv results/cross_validation_scores.csv results/pred_summary_table.csv results/feature_importance.csv
 
 
 # import libraries
@@ -25,6 +25,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('input_file_path')
 parser.add_argument('output_file_path1')
 parser.add_argument('output_file_path2')
+parser.add_argument('output_file_path3')
 args = parser.parse_args()
 
 def main():
@@ -54,12 +55,11 @@ def main():
     
     # create summary table of the result
     summary_lst = ["red_wine_quality_data", "decision_tree", best_depth, round(train_acc,2), round(test_acc, 2)]
-    df = pd.DataFrame(summary_lst, index = ["dataset", "classifier", "best_depth", "train_accuracy", "test_accuracy"])
-    df = df.T
-    df.to_csv(args.output_file_path2)
-
+    create_summary_table(summary_lst)
     
-# dataset, classifier, train_accuracy, test_accuracy
+    # create feature importance table
+    create_feature_importance(X_test.columns, model)
+
 def write_cv_score(cv_scores_lst):
     depth_lst = [x for x in range(1,26)]
     depth_performance = [depth_lst, cv_scores_lst]
@@ -67,6 +67,19 @@ def write_cv_score(cv_scores_lst):
     df = df.T
     df.to_csv(args.output_file_path1)
     
+def create_summary_table(summary_lst):
+    df = pd.DataFrame(summary_lst, index = ["dataset", "classifier", "best_depth", "train_accuracy", "test_accuracy"])
+    df = df.T
+    df.to_csv(args.output_file_path2)
+    
+def create_feature_importance(columns, model):
+    feature_lst = list(model.feature_importances_)
+    feature_scores = [list(columns), feature_lst]
+    df = pd.DataFrame(feature_scores, index = ["feature", "feature_importance"])
+    df = df.T
+    df = df.sort_values(by = "feature_importance", axis = 0, ascending = False)
+    df.to_csv(args.output_file_path3)
+
 # call main function
 if __name__ == "__main__":
     main()
