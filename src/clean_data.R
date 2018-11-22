@@ -35,7 +35,7 @@ main <- function(){
       TRUE ~ NA_real_
     )) %>%
     mutate(quality = if_else(quality <= 3, 0, 1)) %>%
-    mutate_at(vars(quality), as.integer)
+    mutate_at(vars(quality, `total sulfur dioxide`), as.integer)
   
   # print(head(test))
   write_csv(data, output_file)
