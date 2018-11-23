@@ -1,2 +1,2 @@
 ,dataset,classifier,best_depth,train_accuracy,test_accuracy
-0,red_wine_quality_data,decision_tree,17,0.73,0.76
+0,red_wine_quality_data,decision_tree,11,0.72,0.75
