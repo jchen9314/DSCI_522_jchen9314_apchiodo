@@ -6,7 +6,7 @@
 # feature and an image output for all features.  The image outputs are density plots to 
 # two targets
 #
-# Usage: Rscript src/eda.R data/cleaned_winequality-red.csv img
+# Usage: Rscript src/eda.R data/cleaned_winequality-red.csv results/figures
 
 # load libraries
 library(tidyverse)
@@ -50,9 +50,9 @@ main <- function(){
     theme(axis.title.x = element_blank())
   
   # print(head(test))
-  ggsave(paste0(output_dir, '/unbalanced_data.png'), plot2)
-  ggsave(paste0(output_dir, '/alcohol.png'), plot2)
-  ggsave(paste0(output_dir, '/all_vars.png'), plot3)
+  ggsave(paste0(output_dir, '/eda_unbalanced_data.png'), plot1)
+  ggsave(paste0(output_dir, '/eda_alcohol.png'), plot2)
+  ggsave(paste0(output_dir, '/eda_all_vars.png'), plot3)
   
 }
 
