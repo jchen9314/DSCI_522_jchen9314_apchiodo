@@ -15,7 +15,7 @@ library(tidyverse)
 
 ```{r dataImport}
 
-tmp <- read_csv('data/winequality-red.csv')
+tmp <- read_csv('data/cleaned_winequality-red.csv')
 head(tmp)
 
 ```
@@ -48,10 +48,10 @@ test %>%
   )
 
 # Create violin plot
-ggplot(test, aes(x = factor(x = quality_), alcohol)) +
+ggplot(test, aes(x = factor(x = quality_old), alcohol)) +
   geom_violin(fill = "#f8766d", alpha = 0.5) +
   geom_jitter(width = 0.4, alpha = 0.5, size = 0.75) +
-  labs(x = "Quality (re-encoded)",
+  labs(x = "Quality",
        y = "Alcohol (%)") +
   theme_bw()
 
