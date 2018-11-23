@@ -2,14 +2,17 @@
 # wine_quality_predicton.py
 # Jingyun Chen, Nov 22, 2018
 #
-# This script import cleaned dataset from a .csv files and output an cross validation performance on train set
-# as a .csv file, a prediciton summary table as a .csv file, and a feature importance table as a .csv file. 
-# This script takes the path to the input file, and two paths/filenames 
-# where to write the file to and what to call it.
+# This script import cleaned dataset from a .csv files and output  is either an cross validation performance on train set
+# as a .csv file, or a prediciton summary table as a .csv file, or a feature importance table as a .csv file. 
+# This script takes the path to the input file, the path
+# where to write the file, and also an option that specify what type of table a user wants to create.
 #
 # Dependencies: argparse, pandas, numpy, sklearn
 #
-# Usage: python src/wine_quality_pred.py data/cleaned_winequality-red.csv results/cross_validation_scores.csv results/pred_summary_table.csv results/feature_importance.csv
+# Usage: 
+# python src/wine_quality_pred.py data/cleaned_winequality-red.csv results/ --option=cv
+# python src/wine_quality_pred.py data/cleaned_winequality-red.csv results/ --option=acc
+# python src/wine_quality_pred.py data/cleaned_winequality-red.csv results/
 
 
 # import libraries
@@ -22,14 +25,12 @@ from sklearn.model_selection import cross_val_score
 
 # read in command line arguments
 parser = argparse.ArgumentParser()
-parser.add_argument('input_file_path')
-parser.add_argument('output_file_path1')
-parser.add_argument('output_file_path2')
-parser.add_argument('output_file_path3')
+parser.add_argument("input_file_path")
+parser.add_argument("output_file_path")
+parser.add_argument("--option")
 args = parser.parse_args()
 
 def main():
-    
     wine_quality = pd.read_csv(args.input_file_path)
     X = wine_quality.drop("quality", axis = 1)
     y = wine_quality["quality"]
@@ -44,7 +45,6 @@ def main():
         score = cross_val_score(model, X_train, y_train, cv = 5)
         cv_score = score.mean()
         cv_performance.append(cv_score)
-    write_cv_score(cv_performance)
     train_acc = max(cv_performance)
     best_depth = cv_performance.index(train_acc) + 1
     
@@ -52,25 +52,29 @@ def main():
     model = DecisionTreeClassifier(max_depth = best_depth)
     model.fit(X_train, y_train)
     test_acc = model.score(X_test, y_test)
-    
-    # create summary table of the result
-    summary_lst = ["red_wine_quality_data", "decision_tree", best_depth, round(train_acc,2), round(test_acc, 2)]
-    create_summary_table(summary_lst)
-    
-    # create feature importance table
-    create_feature_importance(X_test.columns, model)
+
+    if args.option == "cv":
+        write_cv_score(cv_performance)
+    elif args.option == "acc":
+        # create summary table of the result
+        summary_lst = ["red_wine_quality_data", "decision_tree", best_depth, round(train_acc,2), round(test_acc, 2)]
+        create_acc_table(summary_lst)
+    else:
+        # create feature importance table
+        create_feature_importance(X_test.columns, model)
+
 
 def write_cv_score(cv_scores_lst):
     depth_lst = [x for x in range(1,26)]
     depth_performance = [depth_lst, cv_scores_lst]
     df = pd.DataFrame(depth_performance, index = ["tree_depth", "cv_performance"])
     df = df.T
-    df.to_csv(args.output_file_path1)
+    df.to_csv(args.output_file_path + "cross_validation_scores.csv")
     
-def create_summary_table(summary_lst):
+def create_acc_table(summary_lst):
     df = pd.DataFrame(summary_lst, index = ["dataset", "classifier", "best_depth", "train_accuracy", "test_accuracy"])
     df = df.T
-    df.to_csv(args.output_file_path2)
+    df.to_csv(args.output_file_path + "pred_summary_table.csv")
     
 def create_feature_importance(columns, model):
     feature_lst = list(model.feature_importances_)
@@ -78,7 +82,8 @@ def create_feature_importance(columns, model):
     df = pd.DataFrame(feature_scores, index = ["feature", "feature_importance"])
     df = df.T
     df = df.sort_values(by = "feature_importance", axis = 0, ascending = False)
-    df.to_csv(args.output_file_path3)
+    df = df.reset_index().drop("index", axis= 1)
+    df.to_csv(args.output_file_path + "feature_importance.csv")
 
 # call main function
 if __name__ == "__main__":
