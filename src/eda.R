@@ -6,7 +6,7 @@
 # feature and an image output for all features.  The image outputs are density plots to 
 # two targets
 #
-# Usage: Rscript src/eda.R data/cleaned_winequality-red.csv data/cleaned_winequality-red.csv
+# Usage: Rscript src/eda.R data/cleaned_winequality-red.csv img
 
 # load libraries
 library(tidyverse)
