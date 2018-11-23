@@ -25,6 +25,7 @@ main <- function(){
   
   # print out mean of variable of interest
   data <- data %>%
+    mutate(quality_old = quality) %>%
     mutate(quality = case_when(
       quality == 3 ~ 1,
       quality == 4 ~ 2,
