@@ -41,15 +41,16 @@ def main():
     # pick up the best hyper-parameter using 5 folds cross validation
     cv_performance = []
     for depth in range(1,26):
-        model = DecisionTreeClassifier(max_depth = depth)
+        model = DecisionTreeClassifier(max_depth = depth, random_state = 1234)
         score = cross_val_score(model, X_train, y_train, cv = 5)
         cv_score = score.mean()
         cv_performance.append(cv_score)
     train_acc = max(cv_performance)
     best_depth = cv_performance.index(train_acc) + 1
+    print(best_depth)
     
     # prediction on test data
-    model = DecisionTreeClassifier(max_depth = best_depth)
+    model = DecisionTreeClassifier(max_depth = best_depth, random_state = 1234)
     model.fit(X_train, y_train)
     test_acc = model.score(X_test, y_test)
 
