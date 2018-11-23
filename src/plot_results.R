@@ -40,7 +40,7 @@ main <- function(){
     theme_bw()
   
   # save plots
-  ggsave(paste0(output_dir, "/figure_importance.png"), plot_feature_importance, width = 4, height = 3, dpi = 300)
+  ggsave(paste0(output_dir, "/feature_importance.png"), plot_feature_importance, width = 4, height = 3, dpi = 300)
   ggsave(paste0(output_dir, "/cv_score.png"), plot_cv_scores, width = 4, height = 3, dpi = 300)
   }
 
