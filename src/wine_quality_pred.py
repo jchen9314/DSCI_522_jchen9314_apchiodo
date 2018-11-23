@@ -2,7 +2,7 @@
 # wine_quality_predicton.py
 # Jingyun Chen, Nov 22, 2018
 #
-# This script import cleaned dataset from a .csv files and output  is either an cross validation performance on train set
+# This script import cleaned dataset from a .csv files and output is either an cross validation performance on train set
 # as a .csv file, or a prediciton summary table as a .csv file, or a feature importance table as a .csv file. 
 # This script takes the path to the input file, the path
 # where to write the file, and also an option that specify what type of table a user wants to create.
