@@ -37,3 +37,4 @@ main <- function(){
 
 # call main function
 main()
+print(1)
