@@ -1,6 +1,6 @@
 Predictors of red wine quality
 ================
-Jingyun Chen & Anthony Chiodo
+Jingyun Chen & Anthony Chiodo,
 23/11/2018
 
 ### Introduction
@@ -17,16 +17,17 @@ experts, sommeliers), there clearly must be some characteristics that
 serve as strong predictors for what ultimately is defined as a quality
 wine.
 
-The purpose of this analysis is to determine the which physiochemical
-characteristics of wine are the most important predictors of wine
+The purpose of this analysis is to determine which physiochemical
+characteristics of red wine are the most important predictors of wine
 quality.
 
 ### Data set
 
-The data set we use to conduct this analysis comes from the UCI
-repository (Cortez et. al 2009). It contains 1599 red variants of the
-Portuguese Vinho Verde wine. The physiochemical characteristics are
-captured in 11 features (Table 1), and the target output exists as a
+The data set we use to conduct this analysis was downloaded from Kaggle,
+but originally existed as a data set available through the UCI Machine
+Learning repository (Cortez et. al 2009). It contains 1599 red variants
+of the Portuguese Vinho Verde wine. The physiochemical characteristics
+are captured in 11 features (Table 1), and the target output exists as a
 ranking between 0 and 10 (although, the dataset itself only includes
 ranks ranging from 3 to 8). The target outputs were determined as the
 median rank, and were assessed by wine
@@ -46,6 +47,11 @@ experts.
 | sulphates            | a wine additive which can contribute to sulfur dioxide gas (S02) levels, wich acts as an antimicrobial and antioxidant                                                                          |
 | alcohol              | the percent alcohol content of the wine                                                                                                                                                         |
 
+**Table 1:** A description of the 11 physiochemical characteristics used
+as features to predict wine quality. Descriptions provided by [UCI
+Machine
+Learning](https://www.kaggle.com/uciml/red-wine-quality-cortez-et-al-2009).
+
 Exploratory data analysis revealed that the distribution of the data
 across the targets was fairly unbalanced (i.e. many wines were ranked as
 5 or 6, and few wines were ranked below 5 or above 6). Since the ranking
@@ -53,9 +59,11 @@ scale is from 0 to 10 and most of the data existed at ranks 5 and 6, we
 re-encoded the data such that targets less than or equal to 5 were
 classified as 0 (or “poor” quality), and targets greater than 5 were
 classified as 1 (or “good” quality). By converting this to a binary
-classification problem, the data became more appropriately
-balanced.
+classification problem, the data became more evenly balanced between
+classes.
 
+**Figure 1:** A visual representation of the data associated with each
+class in the original dataset (A), and the re-encoded dataset (B).
 <img src="../results/figures/eda_data_balance.png" width="700px" style="display: block; margin: auto;" />
 
 ### Prediction approach
@@ -78,10 +86,11 @@ for conducting a decision tree classification is as follows:
 
 After running 5-fold cross validation on the train set, we picked the
 depth of 11 as our final tuned hyperparameter for the model because it
-has the highest cross validation score, which is shown in Figure
-X.
+has the highest cross validation score, which is shown in Figure 2.
 
-<img src="../results/figures/cv_score.png" title="**Plotting**" alt="**Plotting**" width="450px" style="display: block; margin: auto;" />
+**Figure 2:** The results of cross validation against maximum tree
+depth.
+<img src="../results/figures/cv_score.png" width="450px" style="display: block; margin: auto;" />
 
 Table 2 shows the classifier and hyperparameter that we used, the
 accuracy of both the train and test set. The final classification
@@ -94,12 +103,13 @@ respectively.
 
 **Table 2:**
 
-Figure X shows the importance of each feature for classifying the wine
+Figure 3 shows the importance of each feature for classifying the wine
 quality. The three most important features according to our results are
 alcohol, volatile acidity, and sulphates with an importance of about
-0.28, 0.12, and 0.12,
-respectively.
+0.28, 0.12, and 0.12, respectively.
 
+**Figure 3:** An ordered plot showing feature importance as determined
+by our decision tree classification.
 <img src="../results/figures/feature_importance.png" width="450px" style="display: block; margin: auto;" />
 
 ### Discussion
@@ -115,10 +125,10 @@ limitation of our analysis. Perhaps if we explored the use of other
 hyperparameters (ex. `min_samples_leaf`, `max_features`, or `criterion`
 from scikit-learn), we would be able to achieve higher classification
 accuracy. Furthermore, a more robust analysis might include not only an
-exploration of the use of additional hyperparameters, but also a
-comparison of how alternative models score. For example, we could have
-used other machine learning models, such as random forest or KNN and
-examined their test accuracy in comparison to decision tree models.
+examination of additional hyperparameters, but also a comparison of how
+alternative models score. For example, we could have used other machine
+learning algorithms, such as random forest or KNN and evaluated their
+test accuracy in comparison to our decision tree model.
 
 ### Future Work
 
@@ -135,5 +145,11 @@ our model).
 
 1.  Red wine quality dataset:
     <https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/>
+      - *P. Cortez, A. Cerdeira, F. Almeida, T. Matos and J. Reis.
+        Modeling wine preferences by data mining from physicochemical
+        properties. In Decision Support Systems, Elsevier,
+        47(4):547-553. ISSN: 0167-9236.*
 2.  Scikit-learn decision tree package:
     <https://scikit-learn.org/stable/modules/tree.html>
+      - *Scikit-learn: Machine Learning in Python, Pedregosa et al.,
+        JMLR 12, pp. 2825-2830, 2011.*

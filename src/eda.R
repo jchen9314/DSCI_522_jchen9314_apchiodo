@@ -29,14 +29,16 @@ main <- function(){
     geom_violin(fill = "#f8766d", alpha = 0.5) +
     geom_jitter(width = 0.4, alpha = 0.5, size = 0.75) +
     labs(x = "Quality",
-         y = "Alcohol (%)") +
+         y = "Alcohol (%)",
+         subtitle = "A") +
     theme_bw()
   
   plot2 <- ggplot(data, aes(x = factor(x = quality), alcohol)) +
     geom_violin(fill = "#f8766d", alpha = 0.5) +
     geom_jitter(width = 0.4, alpha = 0.5, size = 1) +
     labs(x = "Quality (re-encoded)",
-         y = "Alcohol (%)") +
+         y = "Alcohol (%)",
+         subtitle = "B") +
     theme_bw()
   
   plot1_2 <- gridExtra::grid.arrange(plot1, plot2, nrow=1)
