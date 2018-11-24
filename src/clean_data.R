@@ -17,13 +17,12 @@ input_file <- args[1]
 output_file <- args[2]
 
 # define main function
-
 main <- function(){
   
   # read in data
   data <- read_csv(input_file)
   
-  # print out mean of variable of interest
+  # re-encode data
   data <- data %>%
     mutate(quality_old = quality) %>%
     mutate(quality = case_when(
@@ -38,7 +37,7 @@ main <- function(){
     mutate(quality = if_else(quality <= 3, 0, 1)) %>%
     mutate_at(vars(quality, `total sulfur dioxide`), as.integer)
   
-  # print(head(test))
+  # save to file
   write_csv(data, output_file)
   
 }

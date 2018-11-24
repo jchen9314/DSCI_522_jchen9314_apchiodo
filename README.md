@@ -8,7 +8,7 @@
 
 | Name  | Github username | 
 | :------: | :----------: |
-| Jingyun Chen | jchen9314 |  
+| Jingyun Chen | jchen9314|  
 | Anthony Chiodo |apchiodo|
 
 ### Project summary
@@ -71,7 +71,7 @@ Rscript -e "rmarkdown::render('doc/wine_quality_analysis_report.Rmd')"
 
 	- `rmarkdown`
 	- `knitr`
-	-  `kableExtra`
+	- `kableExtra`
 	- `dplyr`
 	- `tidyverse`
 	- `readr`
