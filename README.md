@@ -12,7 +12,8 @@
 | Anthony Chiodo |apchiodo|
 
 ### Dataset
-The dataset we work on is [Red Wine Quality](https://www.kaggle.com/uciml/red-wine-quality-cortez-et-al-2009) from [Kaggle Dataset](https://www.kaggle.com/datasets).This data set is related to red variants of the Portuguese "Vinho Verde" wine.
+
+The dataset used for this project is the [Red Wine Quality](https://www.kaggle.com/uciml/red-wine-quality-cortez-et-al-2009) dataset. The data was sourced from [Kaggle](https://www.kaggle.com/datasets), however it originally existed on the [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/Wine%2BQuality).  It contains information relating to the physiochemical characteristics of red variants of the Portuguese "Vinho Verde" wine.
 
 ### Project Summary
 To do ...
