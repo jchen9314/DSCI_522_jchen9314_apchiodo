@@ -3,8 +3,9 @@
 # Anthony Chiodo, Jingyun Chen - Nov, 2018
 #
 # This script imports a feature importance table and a cross validation performance table 
-# from a .csv files and outputs a figures that shows all the features' importance and 
+# from .csv files and outputs a figures that shows all the features' importance and 
 # a figure that shows the trend of cross validation score as increasing the depth of tree. 
+# 
 # This script takes the path to the input file and path to the output figure file
 #
 # Dependencies: tidyverse
@@ -38,7 +39,6 @@ main <- function(){
     geom_line() + 
     labs(x = "Tree Depth", y = "Cross Validation Score") +
     theme_bw()
-  
   # save plots
   ggsave(paste0(output_dir, "/feature_importance.png"), plot_feature_importance)
   ggsave(paste0(output_dir, "/cv_score.png"), plot_cv_scores)
