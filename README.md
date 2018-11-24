@@ -39,6 +39,7 @@ Rscript -e "rmarkdown::render('doc/wine_quality_analysis_report.Rmd')"
 
 	- rmarkdown
 	- knitr
+	- kableExtra
 	- dplyr
 	- tidyverse
 	- readr

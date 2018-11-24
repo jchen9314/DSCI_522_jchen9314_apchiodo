@@ -39,6 +39,8 @@ main <- function(){
          y = "Alcohol (%)") +
     theme_bw()
   
+  plot1_2 <- gridExtra::grid.arrange(plot1, plot2, nrow=1)
+  
   data2 <- data %>%
     gather(key = "characteristic", value = "value", -quality)
   
@@ -50,9 +52,8 @@ main <- function(){
     theme(axis.title.x = element_blank())
   
   # print(head(test))
-  ggsave(paste0(output_dir, '/eda_unbalanced_data.png'), plot1)
-  ggsave(paste0(output_dir, '/eda_alcohol.png'), plot2)
-  ggsave(paste0(output_dir, '/eda_all_vars.png'), plot3)
+  ggsave(paste0(output_dir, '/eda_data_balance.png'), plot1_2, width = 11)
+  ggsave(paste0(output_dir, '/eda_all_vars.png'), plot2)
   
 }
 
