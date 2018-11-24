@@ -12,10 +12,10 @@
 | Anthony Chiodo |apchiodo|
 
 ### Dataset
-The dataset we work on is [Red Wine Quality](https://www.kaggle.com/uciml/red-wine-quality-cortez-et-al-2009) from [Kaggle Dataset](https://www.kaggle.com/datasets).This data set is related to red variants of the Portuguese "Vinho Verde" wine.
+The dataset we work on is [Red Wine Quality](https://www.kaggle.com/uciml/red-wine-quality-cortez-et-al-2009) from [Kaggle Dataset](https://www.kaggle.com/datasets).It contains 1599 red variants of the Portuguese Vinho Verde wine. The table below shows the description of 11 physiochemical characteristics of wine and target, which is wine quality which exists as a ranking between 0 and 10. The target outputs were determined as the median rank, and were assessed by wine experts.
 
 ### Project Summary
-To do ...
+
 
 ### Usage
 
@@ -37,21 +37,21 @@ Rscript -e "rmarkdown::render('doc/wine_quality_analysis_report.Rmd')"
 
 - R & R libraries:
 
-	- rmarkdown
-	- knitr
-	- dplyr
-	- tidyverse
-	- readr
+	- `rmarkdown`
+	- `knitr`
+	- `dplyr`
+	- `tidyverse`
+	- `readr`
 
 - Python & Python libraries:
 
-	- argparse
-	- numpy
-	- pandas
-	- sklearn
+	- `argparse`
+	- `numpy`
+	- `pandas`
+	- `sklearn`
 
 ### Release versions
 
-- [V1.0](https://github.com/UBC-MDS/DSCI_522_jchen9314_apchiodo/releases/tag/v1.0)
+- [V1.0](https://github.com/UBC-MDS/DSCI_522_jchen9314_apchiodo/tree/v1.0)
 
-- **v2.0:** To do ...
+- [V2.0](https://github.com/UBC-MDS/DSCI_522_jchen9314_apchiodo/tree/v2.0)
