@@ -1,6 +1,7 @@
 ## Red Wine Quality Predictor
 
 ![](https://media.giphy.com/media/3oKIP5bAoKJFJNOkgM/giphy.gif)
+
 [gif source](https://media.giphy.com/media/3oKIP5bAoKJFJNOkgM/giphy.gif)
 
 ### Team members
@@ -30,7 +31,6 @@ python src/wine_quality_pred.py data/cleaned_winequality-red.csv results/ --opti
 python src/wine_quality_pred.py data/cleaned_winequality-red.csv results/
 Rscript src/plot_results.R results results/figures
 Rscript -e "rmarkdown::render('doc/wine_quality_analysis_report.Rmd')"
-
 ```
 
 ### Dependencies
