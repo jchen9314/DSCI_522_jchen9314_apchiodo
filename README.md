@@ -28,9 +28,7 @@ In order to increase the accuracy of our model, we might explore the use of othe
 In order to improve the generalization ability of our model, we could collect more similar data on different types of wine in the future.
 
 ### Dataset
-Data source is [here](https://www.kaggle.com/uciml/red-wine-quality-cortez-et-al-2009).
-
-Dataset also can be found in the [data folder](https://github.com/jchen9314/DSCI_522_jchen9314_apchiodo/tree/master/data) of this repo.
+Data source is [here](https://www.kaggle.com/uciml/red-wine-quality-cortez-et-al-2009). 
 
 The table below shows the description of 11 physiochemical characteristics used as features to predict wine quality. Descriptions provided by [UCI Machine Learning](https://www.kaggle.com/uciml/red-wine-quality-cortez-et-al-2009).
 

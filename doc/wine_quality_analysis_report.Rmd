@@ -13,7 +13,6 @@ knitr::opts_chunk$set(echo = TRUE)
 library(dplyr)
 ```
 
-
 ### Introduction 
 
 Have you ever attended a dinner party and felt completely clueless when the conversation topic abruptly shifts to the quality of the wine paired with your meal?  If so, then you are not alone. Often, the arbitrary labelling of a given wine (i.e. “good” or “bad”) appears to be subject to an everyday consumers palette. And this is OK. It seems that intuitively, an individual should just simply drink the wine that best pleases their own unique taste. However, given the complexity of the wine industry and the degree of professionalism associated with it (wine experts, sommeliers), there clearly must be some characteristics that serve as strong predictors for what ultimately is defined as a quality wine.
@@ -53,6 +52,7 @@ knitr::kable(tmp)
 Exploratory data analysis revealed that the distribution of the data across the targets was fairly unbalanced (i.e. many wines were ranked as 5 or 6, and few wines were ranked below 5 or above 6). Since the ranking scale is from 0 to 10 and most of the data existed at ranks 5 and 6, we re-encoded the data such that targets less than or equal to 5 were classified as 0  (or “poor” quality), and targets greater than 5 were classified as 1 (or “good” quality). By converting this to a binary classification problem, the data became more evenly balanced between classes.
 
 **Figure 1:** A visual representation of the data associated with each class in the original dataset (A), and the re-encoded dataset (B).
+
 ```{r, out.width = "700px", echo=FALSE, fig.align='center'}
 knitr::include_graphics("../results/figures/eda_data_balance.png")
 ```
@@ -71,7 +71,8 @@ In order to address our primary question, we chose to use a decision tree model.
 
 After running 5-fold cross validation on the train set, we picked the depth of 11 as our final tuned hyperparameter for the model because it has the highest cross validation score, which is shown in Figure 2. 
 
-**Figure 2:** The results of cross validation against maximum tree depth. 
+**Figure 2:** The results of cross validation against maximum tree depth.
+
 ```{r, out.width = "450px", echo=FALSE, fig.align='center'}
 knitr::include_graphics("../results/figures/cv_score.png") 
 ```
@@ -92,6 +93,7 @@ knitr::kable(tmp)
 Figure 3 shows the importance of each feature for classifying the wine quality. The three most important features according to our results are alcohol, volatile acidity, and sulphates with an importance of about 0.276, 0.120, and 0.120, respectively.
 
 **Figure 3:** An ordered plot showing feature importance as determined by our decision tree classification.
+
 ```{r, out.width = "450px", echo=FALSE, fig.align='center'}
 knitr::include_graphics("../results/figures/feature_importance.png")
 ```

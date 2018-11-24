@@ -31,7 +31,9 @@ The data set we use to conduct this analysis was downloaded from Kaggle, but ori
 
 Exploratory data analysis revealed that the distribution of the data across the targets was fairly unbalanced (i.e. many wines were ranked as 5 or 6, and few wines were ranked below 5 or above 6). Since the ranking scale is from 0 to 10 and most of the data existed at ranks 5 and 6, we re-encoded the data such that targets less than or equal to 5 were classified as 0 (or “poor” quality), and targets greater than 5 were classified as 1 (or “good” quality). By converting this to a binary classification problem, the data became more evenly balanced between classes.
 
-**Figure 1:** A visual representation of the data associated with each class in the original dataset (A), and the re-encoded dataset (B). <img src="../results/figures/eda_data_balance.png" width="700px" style="display: block; margin: auto;" />
+**Figure 1:** A visual representation of the data associated with each class in the original dataset (A), and the re-encoded dataset (B).
+
+<img src="../results/figures/eda_data_balance.png" width="700px" style="display: block; margin: auto;" />
 
 ### Prediction approach
 
@@ -47,7 +49,9 @@ In order to address our primary question, we chose to use a decision tree model.
 
 After running 5-fold cross validation on the train set, we picked the depth of 11 as our final tuned hyperparameter for the model because it has the highest cross validation score, which is shown in Figure 2.
 
-**Figure 2:** The results of cross validation against maximum tree depth. <img src="../results/figures/cv_score.png" width="450px" style="display: block; margin: auto;" />
+**Figure 2:** The results of cross validation against maximum tree depth.
+
+<img src="../results/figures/cv_score.png" width="450px" style="display: block; margin: auto;" />
 
 Table 2 shows the classifier and hyperparameter that we used, the accuracy of both the train and test set. The final classification accuracy of the train and test set are around 0.722 and 0.753, respectively.
 
@@ -59,7 +63,9 @@ Table 2 shows the classifier and hyperparameter that we used, the accuracy of bo
 
 Figure 3 shows the importance of each feature for classifying the wine quality. The three most important features according to our results are alcohol, volatile acidity, and sulphates with an importance of about 0.276, 0.120, and 0.120, respectively.
 
-**Figure 3:** An ordered plot showing feature importance as determined by our decision tree classification. <img src="../results/figures/feature_importance.png" width="450px" style="display: block; margin: auto;" />
+**Figure 3:** An ordered plot showing feature importance as determined by our decision tree classification.
+
+<img src="../results/figures/feature_importance.png" width="450px" style="display: block; margin: auto;" />
 
 ### Discussion
 
