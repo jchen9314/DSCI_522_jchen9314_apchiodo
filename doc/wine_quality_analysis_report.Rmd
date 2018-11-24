@@ -97,9 +97,11 @@ knitr::include_graphics("../results/figures/feature_importance.png")
 
 ### Discussion
 
-The classification accuracy is 0.75, which is not a bad result---but is also not a great result. Intuitively, this means that about 75% of time, we are able to correctly predict the quality of the wine based on its physiochemical characteristics.
+The classification accuracy is 0.75, which is not a bad result---but is also not a great result. Intuitively, this means that about 75% of time, we are able to correctly predict the quality of the wine based on its physiochemical characteristics. 
 
 In this project, we only tuned one hyperparameter in our decision tree model, which was the maximum depth. This certainly exists as a limitation of our analysis. Perhaps if we explored the use of other hyperparameters (ex. `min_samples_leaf`, `max_features`, or `criterion` from scikit-learn), we would be able to achieve higher classification accuracy.  Furthermore, a more robust analysis might include not only an examination of additional hyperparameters, but also a comparison of how alternative models score. For example, we could have used other machine learning algorithms, such as random forest or KNN and evaluated their test accuracy in comparison to our decision tree model.
+
+As mentioned, alcohol, volatile acidity, and sulphates were the most important features in determining whether a wine was of poor or good quality.  This means that next time you are at a dinner party, you can likely stun your ordinary wine cosuming audience with a statement somewhere along the lines of "This wine has the most wonderful composition of alcohol, volatile acidity, and sulphates"...(OK, maybe that's a stretch and no one will buy it...but it's worth a shot!)
 
 ### Future Work
 
