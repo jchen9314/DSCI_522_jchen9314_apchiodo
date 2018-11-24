@@ -1,44 +1,57 @@
-# Red Wine Quality Predictor
+## Red Wine Quality Predictor
 
-![](https://media.giphy.com/media/zx6Tsme145Eoo/giphy.gif)
+![](https://media.giphy.com/media/3oKIP5bAoKJFJNOkgM/giphy.gif)
 
-## Team members
+[gif source](https://media.giphy.com/media/3oKIP5bAoKJFJNOkgM/giphy.gif)
+
+### Team members
 
 | Name  | Github username | 
 | :------: | :----------: |
 | Jingyun Chen | jchen9314 |  
 | Anthony Chiodo |apchiodo|
 
-## Release
+### Dataset
+The dataset we work on is [Red Wine Quality](https://www.kaggle.com/uciml/red-wine-quality-cortez-et-al-2009) from [Kaggle Dataset](https://www.kaggle.com/datasets).This data set is related to red variants of the Portuguese "Vinho Verde" wine.
 
-**v1.0:** https://github.com/UBC-MDS/DSCI_522_jchen9314_apchiodo/releases/tag/v1.0
+### Project Summary
+To do ...
 
-## Data set
-The data set we work on is [Red Wine Quality](https://www.kaggle.com/uciml/red-wine-quality-cortez-et-al-2009) from [Kaggle Dataset](https://www.kaggle.com/datasets).This data set is related to red variants of the Portuguese "Vinho Verde" wine.
+### Usage
 
-### Proof we can load data
+1. Clone this repo, and using the command line, navigate to the root of this project.
 
-**Python**
+2. Run the following commands:
 
-![](./img/load_data_py.png)
+```
+Rscript src/clean_data.R data/winequality-red.csv data/cleaned_winequality-red.csv
+Rscript src/eda.R data/cleaned_winequality-red.csv results/figures
+python src/wine_quality_pred.py data/cleaned_winequality-red.csv results/ --option=cv
+python src/wine_quality_pred.py data/cleaned_winequality-red.csv results/ --option=acc
+python src/wine_quality_pred.py data/cleaned_winequality-red.csv results/
+Rscript src/plot_results.R results results/figures
+Rscript -e "rmarkdown::render('doc/wine_quality_analysis_report.Rmd')"
+```
 
-**R**
+### Dependencies
 
-![](./img/load_data_R.png)
+- R & R libraries:
 
-The scripts for loading data can be found [here](https://github.com/UBC-MDS/DSCI_522_jchen9314_apchiodo/tree/master/src).
+	- rmarkdown
+	- knitr
+	- dplyr
+	- tidyverse
+	- readr
 
-## Question
-The question we want to solve is: 
+- Python & Python libraries:
 
-**Which physiochemical characteristics of wine are the strongest predictors of wine quality?**
+	- argparse
+	- numpy
+	- pandas
+	- sklearn
 
-This is a predictive question.
+### Release versions
 
-## Plan of analysis
-We will firstly get familiar with data set by performing some exploratory data analysis. Then, we will split data set into training and test sets. Also, we will separate features of interest from target. We will then apply decision tree classification to the training set using `scikit-learn` and play with some hyperparameters. Finally, we will evaluate how our model performed on the test set and tease out the most important physiochemical characteristics for classifying a good wine.
+- [V1.0](https://github.com/UBC-MDS/DSCI_522_jchen9314_apchiodo/releases/tag/v1.0)
 
-## Summarize the data
-
-The output of the machine learning excercise will give us feature importance in determining wine quality, which we can show in tabular form. To visualize, we can create an ordered bar chart of each feature.
-
+- **v2.0:** To do ...
