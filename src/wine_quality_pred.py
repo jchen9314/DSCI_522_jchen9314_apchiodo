@@ -3,8 +3,9 @@
 # Jingyun Chen, Anthony Chiodo - Nov, 2018
 #
 # This script imports cleaned dataset from a .csv files and outputs an cross validation performance on train set
-# as a .csv file, a prediciton summary table as a .csv file, and a feature importance table as a .csv file(by default). 
-# This script takes the path to the input file, the path where to write the file, 
+# as a .csv file, a prediciton summary table as a .csv file, and a feature importance table as a .csv file. 
+#
+# This script takes the path to the input file and the path to the output file. 
 #
 # Dependencies: argparse, pandas, numpy, sklearn
 #
@@ -45,7 +46,7 @@ def main():
     train_acc = max(cv_performance)
     best_depth = cv_performance.index(train_acc) + 1
     # prediction on test data
-    model = DecisionTreeClassifier(max_depth = best_depth, random_state = 1234 )
+    model = DecisionTreeClassifier(max_depth = best_depth, random_state = 1234)
     model.fit(X_train, y_train)
     test_acc = model.score(X_test, y_test)
     # create summary table of the result

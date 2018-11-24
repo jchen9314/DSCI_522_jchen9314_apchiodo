@@ -2,14 +2,9 @@
 
 ![](https://media.giphy.com/media/3oKIP5bAoKJFJNOkgM/giphy.gif)
 
-[gif source](https://media.giphy.com/media/3oKIP5bAoKJFJNOkgM/giphy.gif)
+[source](https://media.giphy.com/media/3oKIP5bAoKJFJNOkgM/giphy.gif)
 
-### Team members
-
-| Name  | Github username | 
-| :------: | :----------: |
-| Jingyun Chen | jchen9314|  
-| Anthony Chiodo |apchiodo|
+Collaborators: Jingyun Chen ([jchen9314](https://github.com/jchen9314)) & Anthony Chiodo ([apchiodo](https://github.com/apchiod))
 
 ### Project summary
 
@@ -20,20 +15,24 @@ serve as strong predictors for what ultimately is defined as a quality wine.
 
 The objective of this project is to find out which physiochemical characteristics of wine are the most important predictors of wine quality.
 
-In this project, we use red wine quality dataset from Kaggle. It contains 1599 red variants of the Portuguese Vinho Verde wine. The table below shows the description of 11 physiochemical characteristics of wine in detial. Besides,the target variable, which is wine quality, is ranked between 0 and 10.
+In this project, we used red wine quality dataset from Kaggle. It contains 1599 red variants of the Portuguese Vinho Verde wine. A table shows the description of 11 physiochemical characteristics of wine in detail can be found in Dataset section. Besides,the target variable, which is wine quality, is ranked between 0 and 10. 
 
-In order to address this predictive question, we applied decision tree algorithm to our dataset. We separated features from target and splitted into train and test set by 80:20. We performed 5-fold cross validation to choose the best `max_depth` of our model. We then trained our model on train set and predict our target on test set. 
+Exploratory data analysis revealed that the distribution of the data across the targets was fairly unbalanced. Thus, we re-encoded the data such that targets less than or equal to 5 were classified as 0 (or “poor” quality), and targets greater than 5 were classified as 1 (or “good” quality) so that the data became more evenly balanced between classes.
+
+In order to address this binary classification problem, we applied decision tree algorithm to our dataset. We separated features from target and splitted into train and test set by 80:20. We performed 5-fold cross validation to choose the best `max_depth` of our model. We then trained our model on train set and predicted our target on test set. 
 
 After performing cross validation, the best `max_depth` we chose is 11 and our classification accuracy on test set is about 0.753. Also, the three most important features according to our results are alcohol, volatile acidity, and sulphates.
 
-In order to increase the accuracy of our model, we might to explore the use of other hyperparameters and might to use other machine learning models such as random forest.
+In order to increase the accuracy of our model, we might explore the use of other hyperparameters and might use other machine learning models such as random forest.
 
 In order to improve the generalization ability of our model, we could collect more similar data on different types of wine in the future.
 
 ### Dataset
-- Data source: [red wine quality dataset](https://www.kaggle.com/uciml/red-wine-quality-cortez-et-al-2009)
-- Data can also be found in the [data folder](https://github.com/jchen9314/DSCI_522_jchen9314_apchiodo/tree/master/data) of this repo.
-- Description of each feature
+Data source is [here](https://www.kaggle.com/uciml/red-wine-quality-cortez-et-al-2009).
+
+Dataset also can be found in the [data folder](https://github.com/jchen9314/DSCI_522_jchen9314_apchiodo/tree/master/data) of this repo.
+
+The table below shows the description of 11 physiochemical characteristics used as features to predict wine quality. Descriptions provided by [UCI Machine Learning](https://www.kaggle.com/uciml/red-wine-quality-cortez-et-al-2009).
 
 | feature              | description                                                                                                                                                                                     |
 | :------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -55,7 +54,7 @@ You can reproduce our analysis with the following steps:
 
 1. Clone this repo, and using the command line, navigate to the root of this project.
 
-2. Run the following commands:
+2. Run the following commands one by one:
 
 ```
 Rscript src/clean_data.R data/winequality-red.csv data/cleaned_winequality-red.csv
@@ -71,7 +70,6 @@ Rscript -e "rmarkdown::render('doc/wine_quality_analysis_report.Rmd')"
 
 	- `rmarkdown`
 	- `knitr`
-	- `kableExtra`
 	- `dplyr`
 	- `tidyverse`
 	- `readr`

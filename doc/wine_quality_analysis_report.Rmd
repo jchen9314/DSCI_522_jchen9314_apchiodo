@@ -48,7 +48,7 @@ knitr::kable(tmp)
 
 ```
 
-**Table 1:** A description of the 11 physiochemical characteristics used as features to predict wine quality.  Descriptions provided by [UCI Machine Learning](https://www.kaggle.com/uciml/red-wine-quality-cortez-et-al-2009).
+**Table 1:** A description of the 11 physiochemical characteristics used as features to predict wine quality. Descriptions provided by [UCI Machine Learning](https://www.kaggle.com/uciml/red-wine-quality-cortez-et-al-2009).
 
 Exploratory data analysis revealed that the distribution of the data across the targets was fairly unbalanced (i.e. many wines were ranked as 5 or 6, and few wines were ranked below 5 or above 6). Since the ranking scale is from 0 to 10 and most of the data existed at ranks 5 and 6, we re-encoded the data such that targets less than or equal to 5 were classified as 0  (or “poor” quality), and targets greater than 5 were classified as 1 (or “good” quality). By converting this to a binary classification problem, the data became more evenly balanced between classes.
 
@@ -76,19 +76,20 @@ After running 5-fold cross validation on the train set, we picked the depth of 1
 knitr::include_graphics("../results/figures/cv_score.png") 
 ```
 
-Table 2 shows the classifier and hyperparameter that we used, the accuracy of both the train and test set. The final classification accuracy of the train and test set are around 0.72 and 0.75, respectively.
+Table 2 shows the classifier and hyperparameter that we used, the accuracy of both the train and test set. The final classification accuracy of the train and test set are around 0.722 and 0.753, respectively.
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
 
 tmp <- readr::read_csv('../results/pred_summary_table.csv') %>%
   select(-X1, -dataset)
 
-knitr::kable(tmp, caption = "**Table 2:**") %>%
-  kableExtra::kable_styling(position = 'center')
+knitr::kable(tmp)
 
 ```
 
-Figure 3 shows the importance of each feature for classifying the wine quality. The three most important features according to our results are alcohol, volatile acidity, and sulphates with an importance of about 0.28, 0.12, and 0.12, respectively.
+**Table 2:** Prediction summary
+
+Figure 3 shows the importance of each feature for classifying the wine quality. The three most important features according to our results are alcohol, volatile acidity, and sulphates with an importance of about 0.276, 0.120, and 0.120, respectively.
 
 **Figure 3:** An ordered plot showing feature importance as determined by our decision tree classification.
 ```{r, out.width = "450px", echo=FALSE, fig.align='center'}
@@ -97,15 +98,15 @@ knitr::include_graphics("../results/figures/feature_importance.png")
 
 ### Discussion
 
-The classification accuracy is 0.75, which is not a bad result---but is also not a great result. Intuitively, this means that about 75% of time, we are able to correctly predict the quality of the wine based on its physiochemical characteristics. 
+The classification accuracy is around 0.753, which is not a bad result---but is also not a great result. Intuitively, this means that about 75% of time, we are able to correctly predict the quality of the wine based on its physiochemical characteristics. 
 
 In this project, we only tuned one hyperparameter in our decision tree model, which was the maximum depth. This certainly exists as a limitation of our analysis. Perhaps if we explored the use of other hyperparameters (ex. `min_samples_leaf`, `max_features`, or `criterion` from scikit-learn), we would be able to achieve higher classification accuracy.  Furthermore, a more robust analysis might include not only an examination of additional hyperparameters, but also a comparison of how alternative models score. For example, we could have used other machine learning algorithms, such as random forest or KNN and evaluated their test accuracy in comparison to our decision tree model.
 
-As mentioned, alcohol, volatile acidity, and sulphates were the most important features in determining whether a wine was of poor or good quality.  This means that next time you are at a dinner party, you can likely stun your ordinary wine cosuming audience with a statement somewhere along the lines of "This wine has the most wonderful composition of alcohol, volatile acidity, and sulphates"...(OK, maybe that's a stretch and no one will buy it...but it's worth a shot!)
+As mentioned, alcohol, volatile acidity, and sulphates were the most important features in determining whether a wine was of poor or good quality. This means that next time you are at a dinner party, you can likely stun your ordinary wine cosuming audience with a statement somewhere along the lines of "This wine has the most wonderful composition of alcohol, volatile acidity, and sulphates"...(OK, maybe that's a stretch and no one will buy it...but it's worth a shot!)
 
 ### Future Work
 
-A limitation of this model is that the dataset only contains information on a specific type of Portuguese red wine, Vinho Verde.  This means that our model is not appropriate to test the quality of different types of red wine (ex. Merlot, Cabernet Sauvignon, etc.).  If we were to collect similar data on different types of wine, perhaps we would be able to tease out which physiochemical characteristics are most important in determining red wine quality, regardless of its type (thus, generalizing our model).
+A limitation of this model is that the dataset only contains information on a specific type of Portuguese red wine, Vinho Verde. This means that our model is not appropriate to test the quality of different types of red wine (ex. Merlot, Cabernet Sauvignon, etc.).  If we were to collect similar data on different types of wine, perhaps we would be able to tease out which physiochemical characteristics are most important in determining red wine quality, regardless of its type (thus, generalizing our model).
 
 ### Reference
 
@@ -115,6 +116,3 @@ A limitation of this model is that the dataset only contains information on a sp
   In Decision Support Systems, Elsevier, 47(4):547-553. ISSN: 0167-9236.*
 2. Scikit-learn decision tree package: https://scikit-learn.org/stable/modules/tree.html
     - *Scikit-learn: Machine Learning in Python, Pedregosa et al., JMLR 12, pp. 2825-2830, 2011.*
-
-
-
