@@ -13,8 +13,12 @@
 #      - Clean data set: data/cleaned_winequality-red.csv
 #
 # Outputs:
-#      - 
-#      - 
+#      - A violin plot showing distribution of data on original targets and on
+#        re-encoded targets ("low quality", "high quality"; alcohol chosen as
+#        arbitrary feature for visualization): eda_data_balance.png
+#
+#      - An density plot showing distribution of on re-encoded targets across
+#        all features("low quality", "high quality"): eda_all_vars_density.png
 #
 # Dependencies: tidyverse
 # 
