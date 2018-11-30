@@ -24,7 +24,7 @@ The data set we use to conduct this analysis was downloaded from Kaggle, but ori
 | total sulfur dioxide | amount of free and bound forms of S02; in low concentrations, SO2 is mostly undetectable in wine, but at free SO2 concentrations over 50 ppm, SO2 becomes evident in the nose and taste of wine |
 | density              | the density of water is close to that of water depending on the percent alcohol and sugar content                                                                                               |
 | pH                   | describes how acidic or basic a wine is on a scale from 0 (very acidic) to 14 (very basic); most wines are between 3-4 on the pH scale                                                          |
-| sulphates            | a wine additive which can contribute to sulfur dioxide gas (S02) levels, wich acts as an antimicrobial and antioxidant                                                                          |
+| sulphates            | a wine additive which can contribute to sulfur dioxide gas (S02) levels, which acts as an antimicrobial and antioxidant                                                                         |
 | alcohol              | the percent alcohol content of the wine                                                                                                                                                         |
 
 **Table 1:** A description of the 11 physiochemical characteristics used as features to predict wine quality. Descriptions provided by [UCI Machine Learning](https://www.kaggle.com/uciml/red-wine-quality-cortez-et-al-2009).
@@ -49,31 +49,46 @@ In order to address our primary question, we chose to use a decision tree model.
 
 After running 5-fold cross validation on the train set, we picked the depth of 11 as our final tuned hyperparameter for the model because it has the highest cross validation score, which is shown in Figure 2.
 
-**Figure 2:** The results of cross validation against maximum tree depth.
+**Figure 2:** The results of cross validation against maximum tree depth
 
 <img src="../results/figures/cv_score.png" width="450px" style="display: block; margin: auto;" />
 
+Figure 3 shows a decision tree model we used in this project.
+
+**Figure 3:** The decision tree model visualization
+
+<img src="../results/figures/tree_model.png" width="450px" style="display: block; margin: auto;" />
+
 Table 2 shows the classifier and hyperparameter that we used, the accuracy of both the train and test set. The final classification accuracy of the train and test set are around 0.722 and 0.753, respectively.
 
-| classifier     |  best\_depth|  train\_accuracy|  test\_accuracy|
-|:---------------|------------:|----------------:|---------------:|
-| decision\_tree |           11|            0.722|           0.753|
+| Classifier    |  Best depth|  Train accuracy|  Test accuracy|
+|:--------------|-----------:|---------------:|--------------:|
+| Decision tree |           4|           0.722|          0.712|
 
 **Table 2:** Prediction summary
 
-Figure 3 shows the importance of each feature for classifying the wine quality. The three most important features according to our results are alcohol, volatile acidity, and sulphates with an importance of about 0.276, 0.120, and 0.120, respectively.
+Table 3 shows the importance of each feature for classifying the wine quality. Features that have zero importance are not shown in the table. The three most important features according to our results are alcohol, sulphates, and total sulfur dioxide with an importance of about 0.553, 0.208, and 0.108, respectively.
 
-**Figure 3:** An ordered plot showing feature importance as determined by our decision tree classification.
+**Table 3:** A table showing feature importance as determined by our decision tree classification.
 
-<img src="../results/figures/feature_importance.png" width="450px" style="display: block; margin: auto;" />
+| Feature              |  Feature importance|
+|:---------------------|-------------------:|
+| alcohol              |               0.553|
+| sulphates            |               0.208|
+| total sulfur dioxide |               0.108|
+| volatile acidity     |               0.087|
+| pH                   |               0.035|
+| density              |               0.009|
 
 ### Discussion
 
-The classification accuracy is around 0.753, which is not a bad result---but is also not a great result. Intuitively, this means that about 75% of time, we are able to correctly predict the quality of the wine based on its physiochemical characteristics.
+**To do: Discussion on tree model**
+
+The classification accuracy is around 0.712, which is not a bad result---but is also not a great result. Intuitively, this means that about 71% of time, we are able to correctly predict the quality of the wine based on its physiochemical characteristics.
 
 In this project, we only tuned one hyperparameter in our decision tree model, which was the maximum depth. This certainly exists as a limitation of our analysis. Perhaps if we explored the use of other hyperparameters (ex. `min_samples_leaf`, `max_features`, or `criterion` from scikit-learn), we would be able to achieve higher classification accuracy. Furthermore, a more robust analysis might include not only an examination of additional hyperparameters, but also a comparison of how alternative models score. For example, we could have used other machine learning algorithms, such as random forest or KNN and evaluated their test accuracy in comparison to our decision tree model.
 
-As mentioned, alcohol, volatile acidity, and sulphates were the most important features in determining whether a wine was of poor or good quality. This means that next time you are at a dinner party, you can likely stun your ordinary wine cosuming audience with a statement somewhere along the lines of "This wine has the most wonderful composition of alcohol, volatile acidity, and sulphates"...(OK, maybe that's a stretch and no one will buy it...but it's worth a shot!)
+As mentioned, alcohol, volatile acidity, and sulphates were the most important features in determining whether a wine was of poor or good quality. This means that next time you are at a dinner party, you can likely stun your ordinary wine cosuming audience with a statement somewhere along the lines of "This wine has the most wonderful composition of alcohol, sulphates, and total sulfur dioxide"...(OK, maybe that's a stretch and no one will buy it...but it's worth a shot!)
 
 ### Future Work
 
