@@ -51,6 +51,7 @@ main <- function(){
   plot2 <- ggplot(data, aes(x = factor(x = quality), alcohol)) +
     geom_violin(fill = "#f8766d", alpha = 0.5) +
     geom_jitter(width = 0.4, alpha = 0.5, size = 1) +
+    scale_x_discrete(labels = c('low quality', 'high quality')) +
     labs(x = "Quality (re-encoded)",
          y = "Alcohol (%)",
          subtitle = "B") +
