@@ -55,10 +55,10 @@ You can reproduce our analysis with the following steps:
 2. Run the following commands one by one:
 
 ```
-Rscript src/clean_data.R data/winequality-red.csv data/cleaned_winequality-red.csv
-Rscript src/eda.R data/cleaned_winequality-red.csv results/figures
-python src/wine_quality_pred.py data/cleaned_winequality-red.csv results/
-Rscript src/plot_results.R results results/figures
+Rscript src/01_wine_data_clean.R data/winequality-red.csv data/cleaned_winequality-red.csv
+Rscript src/02_wine_data_viz.R data/cleaned_winequality-red.csv results/figures
+python src/03_wine_quality_pred.py data/cleaned_winequality-red.csv results/
+python src/04_plot_tree_model.py results/ results/figures/
 Rscript -e "rmarkdown::render('doc/wine_quality_analysis_report.Rmd')"
 ```
 
@@ -78,6 +78,9 @@ Rscript -e "rmarkdown::render('doc/wine_quality_analysis_report.Rmd')"
 	- `numpy`
 	- `pandas`
 	- `sklearn`
+	- `pickle`
+	- `graphviz`
+	- `matplotplib`
 
 ### Report
 The analysis report can be found [here](https://github.com/jchen9314/DSCI_522_jchen9314_apchiodo/blob/master/doc/wine_quality_analysis_report.md).

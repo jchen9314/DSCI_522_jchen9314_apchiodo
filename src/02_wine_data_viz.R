@@ -1,5 +1,5 @@
 #! /usr/bin/env Rscript 
-# data_clean.R
+# 02_wine_data_viz.R
 # Anthony Chiodo, Jingyun Chen - Nov, 2018
 #
 # Import the cleaned red wine data set and create a violin plot for the
@@ -7,7 +7,7 @@
 # creates a facetted density plot to compare the distribution of re-encoded
 # classes across all features.
 #
-# Usage: Rscript src/eda.R data/cleaned_winequality-red.csv results/figures
+# Usage: Rscript src/02_wine_data_viz.R data/cleaned_winequality-red.csv results/figures
 
 # load libraries
 library(tidyverse)

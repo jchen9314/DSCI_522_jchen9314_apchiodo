@@ -1,11 +1,11 @@
 #! /usr/bin/env Rscript 
-# data_clean.R
+# 01_wine_data_clean.R
 # Anthony Chiodo, Jingyun Chen - Nov, 2018
 #
 # Import the red wine data set and re-encode the 'quality' variable to only have
 # two targets
 #
-# Usage: Rscript src/clean_data.R data/winequality-red.csv data/cleaned_winequality-red.csv
+# Usage: Rscript src/01_wine_data_clean.R data/winequality-red.csv data/cleaned_winequality-red.csv
 
 # load libraries
 library(readr)
