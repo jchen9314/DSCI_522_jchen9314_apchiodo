@@ -30,7 +30,7 @@ In order to improve the generalization ability of our model, we could collect mo
 ### Dataset
 Data source is [here](https://www.kaggle.com/uciml/red-wine-quality-cortez-et-al-2009). 
 
-The table below shows the description of 11 physiochemical characteristics used as features to predict wine quality. Descriptions provided by [UCI Machine Learning](https://www.kaggle.com/uciml/red-wine-quality-cortez-et-al-2009).
+The table below shows the description of 11 physiochemical characteristics used as numeric features to predict wine quality, which is a categorical variable. Descriptions provided by [UCI Machine Learning](https://www.kaggle.com/uciml/red-wine-quality-cortez-et-al-2009).
 
 | feature              | description                                                                                                                                                                                     |
 | :------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -52,35 +52,60 @@ You can reproduce our analysis with the following steps:
 
 1. Clone this repo, and using the command line, navigate to the root of this project.
 
-2. Run the following commands one by one:
+2. Run Makefile by typing following code in the terminal:
 
 ```
-Rscript src/01_wine_data_clean.R data/winequality-red.csv data/cleaned_winequality-red.csv
-Rscript src/02_wine_data_viz.R data/cleaned_winequality-red.csv results/figures
-python src/03_wine_quality_pred.py data/cleaned_winequality-red.csv results/
-python src/04_plot_tree_model.py results/ results/figures/
-Rscript -e "rmarkdown::render('doc/wine_quality_analysis_report.Rmd')"
+# Removes unnecessary files to start the analysis from scratch
+make clean
+
+# Runs all scripts to generate the report
+make all
+```
+The Makefile creates an entire data analysis pipline for our red wine quality prediction project by executing the following scripts one by one:
+
+```
+# step 1. run 01_wine_data_clean.R script: clean data set
+data/cleaned_winequality-red.csv: data/winequality-red.csv src/01_wine_data_clean.R
+	Rscript src/01_wine_data_clean.R data/winequality-red.csv data/cleaned_winequality-red.csv
+
+# step 2. run 02_wine_data_viz.R script: wine data visualization
+results/figures/eda_data_balance.png results/figures/eda_all_vars.png: data/cleaned_winequality-red.csv src/02_wine_data_viz.R
+	Rscript src/02_wine_data_viz.R data/cleaned_winequality-red.csv results/figures
+
+# step 3. run 03_wine_quality_pred.py script: wine quality prediction and save results
+results/cross_validation_scores.csv results/pred_summary_table.csv results/winequality_pred_model.pkl results/feature_importance.csv: data/cleaned_winequality-red.csv src/03_wine_quality_pred.py
+	python src/03_wine_quality_pred.py data/cleaned_winequality-red.csv results/
+
+# step 4 run 04_plot_tree_model.py script: cross-validation score and decision tree model visualization
+results/figures/tree_model.png results/figures/cv_score.png: results/winequality_pred_model.pkl results/cross_validation_scores.csv src/04_plot_tree_model.py
+	python src/04_plot_tree_model.py results/ results/figures/
+
+# step 5. knit the final report
+doc/wine_quality_analysis_report.md: doc/wine_quality_analysis_report.Rmd results/figures/eda_data_balance.png results/figures/eda_all_vars.png results/figures/tree_model.png results/figures/cv_score.png
+	Rscript -e "rmarkdown::render('doc/wine_quality_analysis_report.Rmd')"
 ```
 
 ### Dependencies
 
 - R & R libraries:
 
-	- `rmarkdown`
-	- `knitr`
-	- `dplyr`
-	- `tidyverse`
-	- `readr`
+	- `R 3.5.1`
+	- `rmarkdown 1.10`
+	- `knitr 1.20`
+	- `dplyr 0.7.6`
+	- `tidyverse 1.2.1`
+	- `readr 1.1.1`
 
 - Python & Python libraries:
-
+ 
+    - `python 3.6.5`
 	- `argparse`
-	- `numpy`
-	- `pandas`
-	- `sklearn`
+	- `numpy 1.14.3`
+	- `pandas 0.23.0`
+	- `sklearn 0.19.1`
 	- `pickle`
-	- `graphviz`
-	- `matplotplib`
+	- `graphviz 0.10.1`
+	- `matplotplib 2.2.2`
 
 ### Report
 The analysis report can be found [here](https://github.com/jchen9314/DSCI_522_jchen9314_apchiodo/blob/master/doc/wine_quality_analysis_report.md).
@@ -90,3 +115,5 @@ The analysis report can be found [here](https://github.com/jchen9314/DSCI_522_jc
 - [V1.0](https://github.com/UBC-MDS/DSCI_522_jchen9314_apchiodo/tree/v1.0)
 
 - [V2.0](https://github.com/UBC-MDS/DSCI_522_jchen9314_apchiodo/tree/v2.0)
+
+- [V3.0](https://github.com/UBC-MDS/DSCI_522_jchen9314_apchiodo/tree/v3.0)
