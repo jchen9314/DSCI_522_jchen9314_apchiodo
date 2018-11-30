@@ -5,7 +5,7 @@ Jingyun Chen & Anthony Chiodo,
 
 ### Introduction
 
-Have you ever attended a dinner party and felt completely clueless when the conversation topic abruptly shifts to the quality of the wine paired with your meal? If so, then you are not alone. Often, the arbitrary labeling of a given wine (i.e. “good” or “bad”) appears to be subject to an everyday consumers palette. And this is OK. It seems that intuitively, an individual should just simply drink the wine that best pleases their own unique taste. However, given the complexity of the wine industry and the degree of professionalism associated with it (wine experts, sommeliers), there clearly must be some characteristics that serve as strong predictors for what ultimately is defined as a quality wine.
+Have you ever attended a dinner party and felt completely clueless when the conversation topic abruptly shifts to the quality of the wine paired with your meal? If so, then you are not alone. Often, the arbitrary labeling of a given wine (i.e. â€œgoodâ€ or â€œbadâ€) appears to be subject to an everyday consumers palette. And this is OK. It seems that intuitively, an individual should just simply drink the wine that best pleases their own unique taste. However, given the complexity of the wine industry and the degree of professionalism associated with it (wine experts, sommeliers), there clearly must be some characteristics that serve as strong predictors for what ultimately is defined as a quality wine.
 
 The purpose of this analysis is to determine which physiochemical characteristics of red wine are the most important predictors of wine quality.
 
@@ -29,7 +29,7 @@ The data set we use to conduct this analysis was downloaded from Kaggle, but ori
 
 **Table 1:** A description of the 11 physiochemical characteristics used as features to predict wine quality. Descriptions provided by [UCI Machine Learning](https://www.kaggle.com/uciml/red-wine-quality-cortez-et-al-2009).
 
-Exploratory data analysis revealed that the distribution of the data across the targets was fairly unbalanced (i.e. many wines were ranked as 5 or 6, and few wines were ranked below 5 or above 6). Since the ranking scale is from 0 to 10 and most of the data existed at ranks 5 and 6, we re-encoded the data such that targets less than or equal to 5 were classified as 0 (or “poor” quality), and targets greater than 5 were classified as 1 (or “good” quality). By converting this to a binary classification problem, the data became more evenly balanced between classes.
+Exploratory data analysis revealed that the distribution of the data across the targets was fairly unbalanced (i.e. many wines were ranked as 5 or 6, and few wines were ranked below 5 or above 6). Since the ranking scale is from 0 to 10 and most of the data existed at ranks 5 and 6, we re-encoded the data such that targets less than or equal to 5 were classified as 0 (or â€œpoorâ€ quality), and targets greater than 5 were classified as 1 (or â€œgoodâ€ quality). By converting this to a binary classification problem, the data became more evenly balanced between classes.
 
 **Figure 1:** A visual representation of the data associated with each class in the original dataset (A), and the re-encoded dataset (B).
 
