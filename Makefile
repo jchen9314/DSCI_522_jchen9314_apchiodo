@@ -1,7 +1,7 @@
 # Makefile
 # Authors: Jingyun Chen, Anthony Chiodo
 # Date: November 30, 2018
-# Purpose: This script creates an entire data analysis pipline for our red wine quality prediction project
+# Purpose: This script creates an entire data analysis pipeline for our red wine quality prediction project
 
 
 #####################################
@@ -28,7 +28,7 @@ results/figures/eda_data_balance.png results/figures/eda_all_vars.png: data/clea
 results/cross_validation_scores.csv results/pred_summary_table.csv results/winequality_pred_model.pkl results/feature_importance.csv: data/cleaned_winequality-red.csv src/03_wine_quality_pred.py
 	python src/03_wine_quality_pred.py data/cleaned_winequality-red.csv results/
 
-# step 4 run 04_plot_tree_model.py script: cross-validation score and decision tree model visualization
+# step 4. run 04_plot_tree_model.py script: cross-validation score and decision tree model visualization
 results/figures/tree_model.png results/figures/cv_score.png: results/winequality_pred_model.pkl results/cross_validation_scores.csv src/04_plot_tree_model.py
 	python src/04_plot_tree_model.py results/ results/figures/
 
