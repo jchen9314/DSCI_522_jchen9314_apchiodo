@@ -1,11 +1,26 @@
-#! /usr/bin/env Rscript 
+#!/usr/bin/env Rscript 
+# 
 # 01_wine_data_clean.R
+# 
 # Anthony Chiodo, Jingyun Chen - Nov, 2018
 #
-# Import the red wine data set and re-encode the 'quality' variable to only have
-# two targets
+# Purpose: This script import the raw red wine data set and re-encodes the 'quality' variable to only have
+#          two targets(1: "good" if the value of quality is greater than 5; otherwise 0: "bad")
+#
+# Input: 
+#      - Raw data set: data/winequality-red.csv
+#
+# Outputs:
+#      - Cleaned data set: data/cleaned_winequality-red.csv
+#
+# Dependencies: readr, dplyr
+# 
+# Arguments: 
+#      - arg1: input_file
+#      - arg2: output_file
 #
 # Usage: Rscript src/01_wine_data_clean.R data/winequality-red.csv data/cleaned_winequality-red.csv
+
 
 # load libraries
 library(readr)
