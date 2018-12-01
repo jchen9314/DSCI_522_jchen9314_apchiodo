@@ -50,7 +50,7 @@ knitr::kable(tmp)
 
 Exploratory data analysis revealed that the distribution of the data across the targets was fairly unbalanced (i.e. many wines were ranked as 5 or 6, and few wines were ranked below 5 or above 6). Since the ranking scale is from 0 to 10 and most of the data existed at ranks 5 and 6, we re-encoded the data such that targets less than or equal to 5 were classified as 0  (or “low quality”), and targets greater than 5 were classified as 1 ("high quality"). By converting this to a binary classification problem, the data became more evenly balanced between classes (Figure 1).
 
-**Figure 1:** A violin plot showing the distribution of alcohol on (A) each target from the original  dataset , and on (B) each target from the re-encoded dataset.
+**Figure 1:** A violin plot showing the distribution of alcohol on (A) each target from the original data set, and on (B) each target from the re-encoded data set.
 
 ```{r, out.width = "700px", echo=FALSE, fig.align='center'}
 knitr::include_graphics("../results/figures/eda_data_balance.png")
@@ -61,14 +61,14 @@ knitr::include_graphics("../results/figures/eda_data_balance.png")
 In order to address our primary question, we chose to use a decision tree model. All of the methods were inherited from `scikit-learn`, which is a machine learning package for the python environment. The process of conducting a decision tree classification is as follows:
 
 1. Separate data into features (11 physiochemical characteristics) and target (wine quality)
-2. Split the data into train (80%) and test (20%) sets
-3. Perform 5-fold cross-validation on the train set to determine the best max depth to use in decision tree model
+2. Split the data into a train (80%) set and a test (20%) set
+3. Perform 5-fold cross-validation on the train set to determine the best max depth to use in our decision tree model
 4. Train decision tree model on training data with best max depth as determined from cross-validation
 5. Predict targets on test data and compute the test accuracy
 
 ### Result
 
-After running 5-fold cross-validation on the train set, we picked the depth of 4 as our final tuned hyper-parameter for the model because it has the highest cross validation score, which is shown in Figure 2. 
+After running 5-fold cross-validation on the train set, we picked the depth of 4 as our final tuned hyper-parameter for the model because it has the highest cross-validation score, which is shown in Figure 2. 
 
 **Figure 2:** The results of 5-fold cross-validation against maximum tree depth.
 
