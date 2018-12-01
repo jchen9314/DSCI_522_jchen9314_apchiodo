@@ -16,11 +16,11 @@ The objective of this project is to find out which physiochemical characteristic
 
 Exploratory data analysis revealed that the distribution of the data across the targets was fairly unbalanced. Thus, we re-encoded the data such that targets less than or equal to 5 were classified as 0 (or “low quality"), and targets greater than 5 were classified as 1 (or "high quality").
 
-In order to address this binary classification problem, we applied a decision tree algorithm to our data set. We separated features from the target and splitted them into train and test set by 80:20. We performed 5-fold cross-validation to choose the best `max_depth` of our model. We then trained our model on train set and predicted our target on the test set. 
+In order to address this binary classification problem, we applied a decision tree algorithm to our data set. We separated features from the target and splitted them into a train and  a test set by 80:20. We performed 5-fold cross-validation to choose the best `max_depth` of our model. We then trained our model on the train set and predicted our target on the test set. 
 
 After performing cross-validation, the best `max_depth` we chose is 4 and our classification accuracy on the test set is about 0.712. 
 
-In building our model, we were also able to tease out the most important features.  According to our results are alcohol, sulphates and total sulfur dioxide are the three most important features.
+In building our model, we were also able to tease out the most important features. According to our results are alcohol, sulphates and total sulfur dioxide are the three most important features.
 
 In order to increase the accuracy of our model, we are considering the use of other hyperparameters and other machine learning models such as random forest.  Furthermore, in order to generalize our model, we would like to include similar data pertaining to varieties of wine outside Portugal.
 
@@ -108,7 +108,7 @@ The following is the description, expected input and output files of each script
 
 3. 03_wine_quality_pred.py
 
-    This script takes cleaned red wine quality data set, splits the data set into a train(80%) and a test(20%) set, and fits the train set into a decision tree model and calculates the prediction accuracy on the test set. Also, it performs a 5-fold cross-validation to find the best hyper-parameter and presents importance of each feature used in this model.
+    This script takes cleaned red wine quality data set, splits the data set into a train(80%) and a test(20%) set, and fits the train set into a decision tree model and calculates the prediction accuracy on the test set. Also, it performs a 5-fold cross-validation to find the best hyper-parameter and presents the importance of each feature used in this model.
 
     Input: 
        

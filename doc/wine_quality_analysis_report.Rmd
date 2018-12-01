@@ -21,7 +21,7 @@ The purpose of this analysis is to determine which physiochemical characteristic
 
 ### Data set
 
-The data set we use to conduct this analysis was downloaded from Kaggle, but originally existed as a data set available through the UCI Machine Learning repository (Cortez et. al 2009). It contains 1599 red variants of the Portuguese Vinho Verde wine. The physiochemical characteristics are captured in 11 numeric features (Table 1), and the categorical target output exists as a ranking between 0 and 10 (although, the dataset itself only includes ranks ranging from 3 to 8). The target outputs were determined as the median rank and were assessed by wine experts.
+The data set we use to conduct this analysis was downloaded from Kaggle, but originally existed as a data set available through the UCI Machine Learning repository (Cortez et. al 2009). It contains 1599 red variants of the Portuguese Vinho Verde wine. The physiochemical characteristics are captured in 11 numeric features (Table 1), and the categorical target output exists as a ranking between 0 and 10 (although, the data set itself only includes ranks ranging from 3 to 8). The target outputs were determined as the median rank and were assessed by wine experts.
 
 **Table 1:** A description of the 11 physiochemical characteristics used as features to predict wine quality. Descriptions provided by [UCI Machine Learning](https://www.kaggle.com/uciml/red-wine-quality-cortez-et-al-2009).
 
@@ -63,8 +63,8 @@ In order to address our primary question, we chose to use a decision tree model.
 1. Separate data into features (11 physiochemical characteristics) and target (wine quality)
 2. Split the data into a train (80%) set and a test (20%) set
 3. Perform 5-fold cross-validation on the train set to determine the best max depth to use in our decision tree model
-4. Train decision tree model on training data with best max depth as determined from cross-validation
-5. Predict targets on test data and compute the test accuracy
+4. Train decision tree model on the training data with best max depth as determined from cross-validation
+5. Predict targets on the test data and compute the test accuracy
 
 ### Result
 
@@ -76,9 +76,9 @@ After running 5-fold cross-validation on the train set, we picked the depth of 4
 knitr::include_graphics("../results/figures/cv_score.png") 
 ```
 
-Figure 3 shows a decision tree model we used in this project.
+Figure 3 shows the decision tree model we used in this project.
 
-**Figure 3:** A visualization of the decision tree model built on the wine quality dataset. Reported are the threshold parameters, number of samples at each node, a measure of gini impurity, number of objects pertaining to each target at each node, and the result of each split.
+**Figure 3:** A visualization of the decision tree model built on the wine quality data set. Reported are the threshold parameters, number of samples at each node, a measure of gini impurity, number of objects pertaining to each target at each node, and the result of each split.
 
 ```{r, out.width = "800px", echo=FALSE, fig.align='center'}
 knitr::include_graphics("../results/figures/tree_model.png") 
@@ -121,11 +121,11 @@ In this project, we only tuned one hyper-parameter in our decision tree model, w
 
 ### Future Work
 
-A limitation of this model is that the dataset only contains information on a specific type of Portuguese red wine, Vinho Verde. This means that our model is not appropriate to test the quality of different types of red wine (ex. Merlot, Cabernet Sauvignon, etc.). If we were to collect similar data on different types of wine, perhaps we would be able to tease out which physiochemical characteristics are most important in determining red wine quality, regardless of its type (thus, generalizing our model).
+A limitation of this model is that the data set only contains information on a specific type of Portuguese red wine, Vinho Verde. This means that our model is not appropriate to test the quality of different types of red wine (ex. Merlot, Cabernet Sauvignon, etc.). If we were to collect similar data on different types of wine, perhaps we would be able to tease out which physiochemical characteristics are most important in determining red wine quality, regardless of its type (thus, generalizing our model).
 
 ### Reference
 
-1. Red wine quality dataset: https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/
+1. Red wine quality data set: https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/
     - *P. Cortez, A. Cerdeira, F. Almeida, T. Matos and J. Reis. 
   Modeling wine preferences by data mining from physicochemical properties.
   In Decision Support Systems, Elsevier, 47(4):547-553. ISSN: 0167-9236.*
