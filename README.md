@@ -8,14 +8,9 @@ Collaborators: Jingyun Chen ([jchen9314](https://github.com/jchen9314)) & Anthon
 
 ### Project summary
 
-<<<<<<< HEAD
-Have you ever attended a dinner party and felt completely clueless when the conversation topic abruptly shifts to the quality of the wine paired with your meal? If so, then you are not alone. Often, the arbitrary labeling of a given wine (i.e. “good” or “bad”) appears to be subject to an everyday consumers palette. And this is OK. 
-
-However, given the complexity of the wine industry and the degree of professionalism associated with it (wine experts, sommeliers), there clearly must be some characteristics that serve as strong predictors for what ultimately is defined as a quality wine.
-=======
 Have you ever attended a dinner party and felt completely clueless when the conversation topic abruptly shifts to the quality of the wine paired with your meal? If so, then you are not alone. Often, the arbitrary labeling of a given wine (i.e. “good” or “bad”) appears to be subject to an everyday consumers palette. However, given the complexity of the wine industry and the degree of professionalism associated with it (wine experts, sommeliers), there clearly must be some characteristics that
 serve as strong predictors for what ultimately is defined as a quality wine.
->>>>>>> 04fe25cb6bd517b44ca8413f9a0a1c322628392c
+
 
 The objective of this project is to find out which physiochemical characteristics of wine are the most important predictors of wine quality.
 
