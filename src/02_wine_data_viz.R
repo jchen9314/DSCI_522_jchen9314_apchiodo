@@ -4,8 +4,8 @@
 # 
 # Anthony Chiodo, Jingyun Chen - Nov, 2018
 #
-# Purpose: This script imports the cleaned red wine data set and create a violin plot for the
-#         'alcohol' feature with original classes and with re-encoded classes. Also it
+# Purpose: This script imports the cleaned red wine data set and creates a violin plot for the
+#         'alcohol' feature with original classes and with re-encoded classes. Also, it
 #          creates a facetted density plot to compare the distribution of re-encoded
 #          classes across all features.
 #
