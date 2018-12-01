@@ -5,7 +5,7 @@
 # Jingyun Chen, Anthony Chiodo - Nov, 2018
 #
 # Purpose: This script takes a decision tree model and a cross-validation score .csv file as inputs and
-# converts them into a tree model graph and a cross-validation score plot, respectively.
+#          converts them into a tree model graph and a cross-validation score plot, respectively.
 #  
 # Input: 
 #      - Decision tree model: results/winequality_pred_model.pkl
@@ -46,7 +46,7 @@ def main():
         tree_model = pickle.load(model)
     save_and_show_decision_tree(tree_model)
 
-def save_and_show_decision_tree(model,class_names = ["bad","good"],save_file_prefix = args.output_file_path +"tree_model", **kwargs):
+def save_and_show_decision_tree(model,class_names = ["low quality","high quality"],save_file_prefix = args.output_file_path +"tree_model", **kwargs):
     """
     Save the decision tree model as a png
     """
