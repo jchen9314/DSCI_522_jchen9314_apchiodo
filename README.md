@@ -22,7 +22,7 @@ After performing cross-validation, the best `max_depth` we chose is 4 and our cl
 
 In building our model, we were also able to tease out the most important features.  According to our results are alcohol, sulphates and total sulfur dioxide are the three most important features.
 
-In order to increase the accuracy of our model, we are considering the use of other hyperparameters and other machine learning models such as random forest.  Furthermore, in order to generalize our model we would like to include similar data pertaining to varieties of wine outside Portugal.
+In order to increase the accuracy of our model, we are considering the use of other hyperparameters and other machine learning models such as random forest.  Furthermore, in order to generalize our model, we would like to include similar data pertaining to varieties of wine outside Portugal.
 
 ### Data set
 Data source is [here](https://www.kaggle.com/uciml/red-wine-quality-cortez-et-al-2009).
@@ -83,7 +83,7 @@ The following is the description, expected input and output files of each script
 
 1. 01\_wine\_data\_clean.R
 
-    This script import the raw red wine data set and re-encodes the 'quality' variable to only have two targets(1: "high quality" if the value of quality is greater than 5; otherwise 0: "low quality")
+    This script imports the raw red wine data set and re-encodes the 'quality' variable to only have two targets(1: "high quality" if the value of quality is greater than 5; otherwise 0: "low quality")
 
     Input:
     
@@ -95,7 +95,7 @@ The following is the description, expected input and output files of each script
 
 2. 02\_wine\_data\_viz.R
 
-    This script imports the cleaned red wine data set and create a violin plot for the 'alcohol' feature with original classes and with re-encoded classes. Also it creates a facetted density plot to compare the distribution of re-encoded classes across all features.
+    This script imports the cleaned red wine data set and create a violin plot for the 'alcohol' feature with original classes and with re-encoded classes. Also, it creates a facetted density plot to compare the distribution of re-encoded classes across all features.
 
     Input: 
        
@@ -108,7 +108,7 @@ The following is the description, expected input and output files of each script
 
 3. 03_wine_quality_pred.py
 
-    This script takes cleaned red wine quality data set, splits the data set into train(80%) and test(20%), and fits into a decision tree model and predict accuracy on test set. Also, it performs a 5-fold cross-validation to find the best hyper-parameter and presents importance of each feature used in this model.
+    This script takes cleaned red wine quality data set, splits the data set into a train(80%) and a test(20%) set, and fits the train set into a decision tree model and calculates the prediction accuracy on the test set. Also, it performs a 5-fold cross-validation to find the best hyper-parameter and presents importance of each feature used in this model.
 
     Input: 
        

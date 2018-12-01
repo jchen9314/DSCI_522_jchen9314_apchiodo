@@ -4,8 +4,8 @@
 # 
 # Jingyun Chen, Anthony Chiodo - Nov, 2018
 #
-# Purpose: This script takes cleaned red wine quality data set, splits the data set into train(80%) and test(20%), 
-#          and fits into a decision tree model and predict accuracy on test set. 
+# Purpose: This script takes cleaned red wine quality data set, splits the data set into a train(80%) set and test(20%) set, 
+#          and fits the train set into a decision tree model and calculate the prediction accuracy on the test set. 
 #          Also, it performs a 5-fold cross-validation to find the best hyper-parameter and presents importance 
 #          of each feature used in this model.
 #

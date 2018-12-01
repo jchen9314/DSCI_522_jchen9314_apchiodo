@@ -4,7 +4,7 @@
 # 
 # Anthony Chiodo, Jingyun Chen - Nov, 2018
 #
-# Purpose: This script import the raw red wine data set and re-encodes the 'quality' variable to only have
+# Purpose: This script imports the raw red wine data set and re-encodes the 'quality' variable to only have
 #          two targets(1: "high quality" if the value of quality is greater than 5; otherwise 0: "low quality")
 #
 # Input: 
