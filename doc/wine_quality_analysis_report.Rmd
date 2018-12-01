@@ -68,7 +68,7 @@ In order to address our primary question, we chose to use a decision tree model.
 
 ### Result
 
-After running 5-fold cross-validation on the train set, we picked the depth of 11 as our final tuned hyper-parameter for the model because it has the highest cross validation score, which is shown in Figure 2. 
+After running 5-fold cross-validation on the train set, we picked the depth of 4 as our final tuned hyper-parameter for the model because it has the highest cross validation score, which is shown in Figure 2. 
 
 **Figure 2:** The results of 5-fold cross-validation against maximum tree depth.
 
