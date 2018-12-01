@@ -13,6 +13,8 @@ The purpose of this analysis is to determine which physiochemical characteristic
 
 The data set we use to conduct this analysis was downloaded from Kaggle, but originally existed as a data set available through the UCI Machine Learning repository (Cortez et. al 2009). It contains 1599 red variants of the Portuguese Vinho Verde wine. The physiochemical characteristics are captured in 11 numeric features (Table 1), and the categorical target output exists as a ranking between 0 and 10 (although, the dataset itself only includes ranks ranging from 3 to 8). The target outputs were determined as the median rank and were assessed by wine experts.
 
+**Table 1:** A description of the 11 physiochemical characteristics used as features to predict wine quality. Descriptions provided by [UCI Machine Learning](https://www.kaggle.com/uciml/red-wine-quality-cortez-et-al-2009).
+
 | Feature              | Description                                                                                                                                                                                      |
 |:---------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Fixed acidity        | Most acids involved with wine or fixed or non-volatile (do not evaporate readily).                                                                                                               |
@@ -27,9 +29,7 @@ The data set we use to conduct this analysis was downloaded from Kaggle, but ori
 | Sulphates            | A wine additive which can contribute to sulfur dioxide gas (S02) levels, which acts as an antimicrobial and antioxidant.                                                                         |
 | Alcohol              | The percent alcohol content of the wine.                                                                                                                                                         |
 
-**Table 1:** A description of the 11 physiochemical characteristics used as features to predict wine quality. Descriptions provided by [UCI Machine Learning](https://www.kaggle.com/uciml/red-wine-quality-cortez-et-al-2009).
-
-Exploratory data analysis revealed that the distribution of the data across the targets was fairly unbalanced (i.e. many wines were ranked as 5 or 6, and few wines were ranked below 5 or above 6). Since the ranking scale is from 0 to 10 and most of the data existed at ranks 5 and 6, we re-encoded the data such that targets less than or equal to 5 were classified as 0 (or â€œlow qualityâ€), and targets greater than 5 were classified as 1 ("high quality"). By converting this to a binary classification problem, the data became more evenly balanced between classes (Figure 1).
+Exploratory data analysis revealed that the distribution of the data across the targets was fairly unbalanced (i.e. many wines were ranked as 5 or 6, and few wines were ranked below 5 or above 6). Since the ranking scale is from 0 to 10 and most of the data existed at ranks 5 and 6, we re-encoded the data such that targets less than or equal to 5 were classified as 0 (or “low quality”), and targets greater than 5 were classified as 1 ("high quality"). By converting this to a binary classification problem, the data became more evenly balanced between classes (Figure 1).
 
 **Figure 1:** A violin plot showing the distribution of alcohol on (A) each target from the original dataset , and on (B) each target from the re-encoded dataset.
 
@@ -57,15 +57,15 @@ Figure 3 shows a decision tree model we used in this project.
 
 **Figure 3:** A visualization of the decision tree model built on the wine quality dataset. Reported are the threshold parameters, number of samples at each node, a measure of gini impurity, number of objects pertaining to each target at each node, and the result of each split.
 
-<img src="../results/figures/tree_model.png" width="700px" style="display: block; margin: auto;" />
+<img src="../results/figures/tree_model.png" width="800px" style="display: block; margin: auto;" />
 
-Table 2 shows the classifier and hyperparameter that we used, the accuracy of both the train and test set. The final classification accuracy of the train and test set are around 0.722 and 0.753, respectively.
+Table 2 shows the classifier and hyper-parameter that we used, the accuracy of both the train and test set. The final classification accuracy of the train and test set are around 0.722 and 0.753, respectively.
+
+**Table 2:** Summary of prediction performance of the decision tree model with maximum tree depth set to 4.
 
 | Classifier    |  Best depth|  Train accuracy|  Test accuracy|
 |:--------------|-----------:|---------------:|--------------:|
 | Decision tree |           4|           0.722|          0.712|
-
-**Table 2:** Summary of prediction performance of the decision tree model with maximum tree depth set to 4.
 
 Table 3 shows the importance of each feature for classifying the wine quality. Features that have zero importance are not shown in the table. The three most important features according to our results are alcohol, sulphates, and total sulfur dioxide with an importance of about 0.553, 0.208, and 0.108, respectively.
 
@@ -86,7 +86,7 @@ The classification accuracy is around 0.712, which is not a bad result---but is 
 
 From our feature importance analysis, we determined alcohol percentage (at 0.553) to be by far the most important characteristic in determining wine quality. While a measure of feature importance tells us that the alcohol percentage is an important feature in the model, it does not tell us whether high alcohol percentage or low alcohol percentage is more indicative of a quality wine. In order to address this question, we can refer to our decision tree graph (Figure 3). The first parameter the model chose to split on is alcohol &lt;= 10.5, which creates two nodes of 665 samples (&lt;= 10.5) and 614 samples (&gt; 10.5). Of the 614 samples where alcohol was greater than 10.5, 466 of these were classified as "high quality". The inverse is true for samples that have alcohol percentage less than 10.5, that is, most of the samples (431 of 665) were of "low quality". What this initial split tells us is that generally, a wine with an alcohol percentage &gt; 10.5 is more likely to be classified as a "high quality" wine. With regards to the other features which we deemed important (sulphates and total sulfur dioxide), there is much more overlap in their distribution and thus do not serve as strong predictors in the same way as alcohol percentage.
 
-In this project, we only tuned one hyperparameter in our decision tree model, which was the maximum depth. This certainly exists as a limitation of our analysis. Perhaps if we explored the use of other hyperparameters (ex. `min_samples_leaf`, `max_features`, or `criterion` from scikit-learn), we would be able to achieve higher classification accuracy. Furthermore, a more robust analysis might include not only an examination of additional hyper-parameters but also a comparison of how alternative models score. For example, we could have used other machine learning algorithms, such as random forest or KNN and evaluated their test accuracy in comparison to our decision tree model.
+In this project, we only tuned one hyper-parameter in our decision tree model, which was the maximum depth. This certainly exists as a limitation of our analysis. Perhaps if we explored the use of other hyper-parameters (ex. `min_samples_leaf`, `max_features`, or `criterion` from scikit-learn), we would be able to achieve higher classification accuracy. Furthermore, a more robust analysis might include not only an examination of additional hyper-parameters but also a comparison of how alternative models score. For example, we could have used other machine learning algorithms, such as random forest or KNN and evaluated their test accuracy in comparison to our decision tree model.
 
 ### Future Work
 
