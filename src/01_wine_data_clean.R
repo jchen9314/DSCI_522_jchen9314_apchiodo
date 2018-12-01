@@ -10,7 +10,7 @@
 # Input: 
 #      - Raw data set: data/winequality-red.csv
 #
-# Outputs:
+# Output:
 #      - Cleaned data set: data/cleaned_winequality-red.csv
 #
 # Dependencies: readr, dplyr
