@@ -1,7 +1,7 @@
-# Docker file for dsci_522_jchen9314_apchiodo
+# Docker file for DSCI_522_jchen9314_apchiodo
 # Jingyun Chen, Anthony Chiodo -- Dec, 2018 
 
-# use rocker/tidyverse as the base image and
+# use rocker/tidyverse as the base image
 FROM rocker/tidyverse
 
 # install R packages
