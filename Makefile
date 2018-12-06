@@ -33,7 +33,7 @@ results/figures/tree_model.png results/figures/cv_score.png: results/winequality
 	python src/04_plot_tree_model.py results/ results/figures/
 
 # step 5. knit the final report
-doc/wine_quality_analysis_report.md: doc/wine_quality_analysis_report.Rmd results/figures/eda_data_balance.png results/figures/eda_all_vars.png results/figures/tree_model.png results/figures/cv_score.png
+doc/wine_quality_analysis_report.md: doc/wine_quality_analysis_report.Rmd results/figures/eda_data_balance.png results/figures/tree_model.png results/figures/cv_score.png
 	Rscript -e "rmarkdown::render('doc/wine_quality_analysis_report.Rmd')"
 
 
@@ -43,7 +43,7 @@ doc/wine_quality_analysis_report.md: doc/wine_quality_analysis_report.Rmd result
 
 clean:
 	rm -f data/cleaned_winequality-red.csv
-	rm -f results/figures/eda_data_balance.png results/figures/eda_all_vars.png 
+	rm -f results/figures/eda_data_balance.png results/figures/eda_all_vars.png
 	rm -f results/figures/tree_model.png results/figures/cv_score.png
 	rm -f doc/wine_quality_analysis_report.md
 	rm -f results/cross_validation_scores.csv results/pred_summary_table.csv results/feature_importance.csv results/winequality_pred_model.pkl

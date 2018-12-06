@@ -1,12 +1,12 @@
 # Docker file for DSCI_522_jchen9314_apchiodo
-# Jingyun Chen, Anthony Chiodo -- Dec, 2018 
+# Jingyun Chen, Anthony Chiodo -- Dec, 2018
 
 # use rocker/tidyverse as the base image
 FROM rocker/tidyverse
 
 # install R packages
 RUN Rscript -e "install.packages('rmarkdown')"
-RUN Rscript -e "install.packages('knits')"
+RUN Rscript -e "install.packages('knitr')"
 RUN Rscript -e "install.packages('dplyr')"
 RUN Rscript -e "install.packages('readr')"
 RUN Rscript -e "install.packages('stringr')"
