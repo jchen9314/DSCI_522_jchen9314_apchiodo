@@ -5,9 +5,7 @@
 # Anthony Chiodo, Jingyun Chen - Nov, 2018
 #
 # Purpose: This script imports the cleaned red wine data set and creates a violin plot for the
-#         'alcohol' feature with original classes and with re-encoded classes. Also, it
-#          creates a facetted density plot to compare the distribution of re-encoded
-#          classes across all features.
+#         'alcohol' feature with original classes and with re-encoded classes.
 #
 # Input: 
 #      - Clean data set: data/cleaned_winequality-red.csv
@@ -17,8 +15,6 @@
 #        re-encoded targets ("low quality", "high quality"; alcohol chosen as
 #        arbitrary feature for visualization): eda_data_balance.png
 #
-#      - An density plot showing distribution of on re-encoded targets across
-#        all features("low quality", "high quality"): eda_all_vars_density.png
 #
 # Dependencies: tidyverse
 # 
@@ -63,20 +59,20 @@ main <- function(){
   
   combine_original_new <- gridExtra::grid.arrange(original_target_violin, new_target_violin, nrow=1)
   
-  data2 <- data %>%
-    select(-quality_old) %>%
-    gather(key = "characteristic", value = "value", -quality)
+  # data2 <- data %>%
+  #   select(-quality_old) %>%
+  #   gather(key = "characteristic", value = "value", -quality)
   
-  explore_all_density <- ggplot(data2, aes(x = value)) +
-    geom_density(aes(group = factor(quality), fill = factor(quality)), alpha = 0.5) +
-    facet_wrap(~characteristic, scales = "free") +
-    labs(fill = "Quality") +
-    theme_bw() +
-    theme(axis.title.x = element_blank())
+  # explore_all_density <- ggplot(data2, aes(x = value)) +
+  #   geom_density(aes(group = factor(quality), fill = factor(quality)), alpha = 0.5) +
+  #   facet_wrap(~characteristic, scales = "free") +
+  #   labs(fill = "Quality") +
+  #   theme_bw() +
+  #   theme(axis.title.x = element_blank())
   
   # save plots
   ggsave(paste0(output_dir, '/eda_data_balance.png'), combine_original_new, width = 11)
-  ggsave(paste0(output_dir, '/eda_all_vars_density.png'), explore_all_density)
+  # ggsave(paste0(output_dir, '/eda_all_vars_density.png'), explore_all_density)
   
 }
 

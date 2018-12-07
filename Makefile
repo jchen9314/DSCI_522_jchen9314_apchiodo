@@ -17,11 +17,11 @@ all: doc/wine_quality_analysis_report.md
 #####################################
 
 # step 1. run 01_wine_data_clean.R script: clean data set
-data/cleaned_winequality-red.csv: data/winequality-red.csv src/01_wine_data_clean.R
-	Rscript src/01_wine_data_clean.R data/winequality-red.csv data/cleaned_winequality-red.csv
+data/cleaned_winequality-red.csv: https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-red.csv data/winequality-red.csv src/01_wine_data_clean.R
+	Rscript src/01_wine_data_clean.R https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-red.csv data/cleaned_winequality-red.csv
 
 # step 2. run 02_wine_data_viz.R script: wine data visualization
-results/figures/eda_data_balance.png results/figures/eda_all_vars.png: data/cleaned_winequality-red.csv src/02_wine_data_viz.R
+results/figures/eda_data_balance.png: data/cleaned_winequality-red.csv src/02_wine_data_viz.R
 	Rscript src/02_wine_data_viz.R data/cleaned_winequality-red.csv results/figures
 
 # step 3. run 03_wine_quality_pred.py script: wine quality prediction and save results

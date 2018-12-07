@@ -4,11 +4,11 @@
 # 
 # Anthony Chiodo, Jingyun Chen - Nov, 2018
 #
-# Purpose: This script imports the raw red wine data set and re-encodes the 'quality' variable to only have
+# Purpose: This script imports the raw red wine data set link and re-encodes the 'quality' variable to only have
 #          two targets(1: "high quality" if the value of quality is greater than 5; otherwise 0: "low quality")
 #
 # Input: 
-#      - Raw data set: data/winequality-red.csv
+#      - Raw data set link: https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-red.csv
 #
 # Output:
 #      - Cleaned data set: data/cleaned_winequality-red.csv
@@ -19,7 +19,7 @@
 #      - arg1: input_file
 #      - arg2: output_file
 #
-# Usage: Rscript src/01_wine_data_clean.R data/winequality-red.csv data/cleaned_winequality-red.csv
+# Usage: Rscript src/01_wine_data_clean.R https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-red.csv data/cleaned_winequality-red.csv
 
 
 # load libraries

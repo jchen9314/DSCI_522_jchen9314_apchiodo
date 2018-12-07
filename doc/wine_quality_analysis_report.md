@@ -57,7 +57,7 @@ Figure 3 shows the decision tree model we used in this project.
 
 **Figure 3:** A visualization of the decision tree model built on the wine quality data set. Reported are the threshold parameters, number of samples at each node, a measure of gini impurity, number of objects pertaining to each target at each node, and the result of each split.
 
-<img src="../results/figures/tree_model.png" width="800px" style="display: block; margin: auto;" />
+<img src="../results/figures/tree_model.png" width="900px" style="display: block; margin: auto;" />
 
 Table 2 shows the classifier and hyper-parameter that we used, the accuracy of both the train and test set. The final classification accuracy of the train and test set are around 0.722 and 0.753, respectively.
 

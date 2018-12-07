@@ -30,6 +30,7 @@
 # import libraries
 import argparse
 import pickle
+import os
 import pandas as pd
 import numpy as np
 from sklearn.tree import DecisionTreeClassifier
@@ -107,3 +108,20 @@ def create_feature_importance(columns, model):
 # call main function
 if __name__ == "__main__":
     main()
+    
+# Unit test
+#
+# test for write_cv_score()
+assert os.path.isfile("results/cross_validation_scores.csv"), "cross_validation_scores.csv not found"
+test_cv_df = pd.read_csv("results/cross_validation_scores.csv").drop("Unnamed: 0", axis = 1)
+assert test_cv_df.shape == (10,2), "Incorrect shape of cross validation score table"
+
+# test for create_acc_table()
+assert os.path.isfile("results/pred_summary_table.csv"), "pred_summary_table.csv not found"
+test_ps_df = pd.read_csv("results/pred_summary_table.csv").drop("Unnamed: 0", axis = 1)
+assert test_ps_df.shape == (1, 5), "Incorrect shape of prediction summary table"
+
+# test for create_feature_importance()
+assert os.path.isfile("results/feature_importance.csv"), "feature_importance.csv not found"
+test_fi_df = pd.read_csv("results/feature_importance.csv").drop("Unnamed: 0", axis = 1)
+assert test_fi_df.shape == (11, 2), "Incorrect shape of feature importance table"
