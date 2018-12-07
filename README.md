@@ -8,27 +8,21 @@ Collaborators: Jingyun Chen ([jchen9314](https://github.com/jchen9314)) & Anthon
 
 ### Project summary
 
-Have you ever attended a dinner party and felt completely clueless when the conversation topic abruptly shifts to the quality of the wine paired with your meal? If so, then you are not alone. Often, the arbitrary labeling of a given wine (i.e. “good” or “bad”) appears to be subject to an everyday consumers palette. However, given the complexity of the wine industry and the degree of professionalism associated with it (wine experts, sommeliers), there clearly must be some characteristics that
-serve as strong predictors for what ultimately is defined as a quality wine.
+Have you ever attended a dinner party and felt completely clueless when the conversation topic abruptly shifts to the quality of the wine paired with your meal? If so, then you are not alone. Often, the arbitrary labeling of a given wine (i.e. “good” or “bad”) appears to be subject to an everyday consumers palette. However, given the complexity of the wine industry and the degree of professionalism associated with it (wine experts, sommeliers), there clearly must be some characteristics that serve as strong predictors for what ultimately is defined as a quality wine.
 
 The objective of this project is to find out which physiochemical characteristics of wine are the most important predictors of wine quality.
 
-Exploratory data analysis revealed that the distribution of the data across the targets was fairly unbalanced. Thus, we re-encoded the data such that targets less than or equal to 5 were classified as 0 (or “low quality"), and targets greater than 5 were classified as 1 (or "high quality").
+Exploratory data analysis revealed that the distribution of the data across the target categories (wine quality, as a rating between 1 and 10) was fairly unbalanced. Thus, we re-encoded the data such that target cartegories less than or equal to 5 were classified as 0 (or “low quality"), and targets greater than 5 were classified as 1 (or "high quality").
 
-In order to address this binary classification problem, we applied a decision tree algorithm to our data set. We separated features from the target and splitted them into a train and  a test set by 80:20. We performed 5-fold cross-validation to choose the best `max_depth` of our model. We then trained our model on the train set and predicted our target on the test set. 
-
-After performing cross-validation, the best `max_depth` we chose is 4 and our classification accuracy on the test set is about 0.712. 
+In order to address this now binary classification problem, we applied a decision tree algorithm to our data set. We separated features from their targets and split them into a train and test sets by 80:20. Through 5-fold cross-validation, we were able to select the best `max_depth` as a hyperparameter for our model. We then trained our model on the train set and predicted our target on the test set. 
 
 In building our model, we were also able to tease out the most important features. According to our results are alcohol, sulphates and total sulfur dioxide are the three most important features.
 
-In order to increase the accuracy of our model, we are considering the use of other hyperparameters and other machine learning models such as random forest.  Furthermore, in order to generalize our model, we would like to include similar data pertaining to varieties of wine outside Portugal.
-
 ### Data set
-Data source is [here](https://www.kaggle.com/uciml/red-wine-quality-cortez-et-al-2009).
 
-In this project, we used a red wine quality data set sourced from Kaggle. It contains 1599 red variants of the Portuguese Vinho Verde wine.
+In this project, we used a red wine quality data set sourced from the [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/wine+quality). It contains 1599 red variants of the Portuguese Vinho Verde wine.
 
-The table below shows the description of 11 physiochemical characteristics used as numeric features to predict wine quality, which is a categorical variable. Descriptions provided by [UCI Machine Learning](https://www.kaggle.com/uciml/red-wine-quality-cortez-et-al-2009).
+The table below shows the description of 11 physiochemical characteristics used as numeric features to predict wine quality, which is a categorical variable. Descriptions provided by [Kaggles version of this dataset](https://www.kaggle.com/uciml/red-wine-quality-cortez-et-al-2009).
 
 | Feature              | Description                                                                                                                                                                                     |
 | :------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -217,3 +211,5 @@ The analysis report can be found [here](https://github.com/jchen9314/DSCI_522_jc
 - [V2.0](https://github.com/UBC-MDS/DSCI_522_jchen9314_apchiodo/tree/v2.0)
 
 - [V3.0](https://github.com/UBC-MDS/DSCI_522_jchen9314_apchiodo/tree/v3.0)
+
+- [V4.0](https://github.com/UBC-MDS/DSCI_522_jchen9314_apchiodo/tree/v4.0)
