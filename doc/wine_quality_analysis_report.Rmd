@@ -80,7 +80,7 @@ Figure 3 shows the decision tree model we used in this project.
 
 **Figure 3:** A visualization of the decision tree model built on the wine quality data set. Reported are the threshold parameters, number of samples at each node, a measure of gini impurity, number of objects pertaining to each target at each node, and the result of each split.
 
-```{r, out.width = "800px", echo=FALSE, fig.align='center'}
+```{r, out.width = "900px", echo=FALSE, fig.align='center'}
 knitr::include_graphics("../results/figures/tree_model.png") 
 ```
 

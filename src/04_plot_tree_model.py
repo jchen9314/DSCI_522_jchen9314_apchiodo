@@ -27,6 +27,7 @@
 # import libraries
 import argparse
 import pickle
+import os
 import pandas as pd
 import graphviz
 from sklearn.tree import export_graphviz
@@ -57,7 +58,8 @@ def save_and_show_decision_tree(model,class_names = ["low quality","high quality
                              feature_names = feature_cols,
                              class_names = class_names,
                              filled = True, rounded = True,
-                             special_characters = True, **kwargs)
+                             special_characters = True, 
+                             rotate=True, impurity=False, label="root")
 
     graph = graphviz.Source(dot_data, format = "png")
     graph.render(save_file_prefix)
@@ -79,3 +81,13 @@ def draw_cv_plot(input_path, output_path):
 # call main function
 if __name__ == "__main__":
     main()
+    
+    
+# Unit test
+#
+# test for save_and_show_decision_tree()
+assert os.path.isfile("results/figures/tree_model.png"), "Decision tree model visualization not found"
+
+# test for draw_cv_plot()
+test_cv_df = pd.read_csv("results/cross_validation_scores.csv").drop("Unnamed: 0", axis = 1)
+assert test_cv_df.shape == (10,2), "Incorrect shape of cross validation score data frame"
