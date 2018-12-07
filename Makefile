@@ -17,7 +17,7 @@ all: doc/wine_quality_analysis_report.md
 #####################################
 
 # step 1. run 01_wine_data_clean.R script: clean data set
-data/cleaned_winequality-red.csv: https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-red.csv data/winequality-red.csv src/01_wine_data_clean.R
+data/cleaned_winequality-red.csv: src/01_wine_data_clean.R
 	Rscript src/01_wine_data_clean.R https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-red.csv data/cleaned_winequality-red.csv
 
 # step 2. run 02_wine_data_viz.R script: wine data visualization
