@@ -1,0 +1,2 @@
+,Data set,Classifier,Best depth,Train accuracy,Test accuracy
+0,Red wine quality data,Decision tree,4,0.722,0.712
