@@ -25,6 +25,7 @@
 # load libraries
 library(readr)
 library(dplyr)
+library(stringr)
 
 # read in command line arguments
 args <- commandArgs(trailingOnly = TRUE)
@@ -35,10 +36,16 @@ output_file <- args[2]
 main <- function(){
   
   # read in data
-  data <- read_csv(input_file)
+  data <- read.delim(input_file, sep = ";")
+  
+  # create vectors to re-format column names
+  old_names <- names(data)
+  new_names <- names(data) %>%
+    str_replace_all("\\.", " ")
   
   # re-encode data
   data <- data %>%
+    rename_at(vars(old_names), ~new_names) %>%
     mutate(quality_old = quality) %>%
     mutate(quality = case_when(
       quality == 3 ~ 1,
