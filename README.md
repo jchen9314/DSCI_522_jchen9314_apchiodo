@@ -187,10 +187,11 @@ Dependency Diagram of the Makefile
 	- `dplyr 0.7.6`
 	- `readr 1.1.1`
 	- `stringr 1.3.1`
+	- `gridExra 2.3`
 
 - Python & Python libraries:
  
-    - `Python 3.6.5`
+  - `Python 3.6.5`
 	- `numpy 1.14.3`
 	- `pandas 0.23.0`
 	- `sklearn 0.19.1`
