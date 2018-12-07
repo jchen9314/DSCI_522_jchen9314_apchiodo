@@ -11,7 +11,6 @@ Collaborators: Jingyun Chen ([jchen9314](https://github.com/jchen9314)) & Anthon
 Have you ever attended a dinner party and felt completely clueless when the conversation topic abruptly shifts to the quality of the wine paired with your meal? If so, then you are not alone. Often, the arbitrary labeling of a given wine (i.e. “good” or “bad”) appears to be subject to an everyday consumers palette. However, given the complexity of the wine industry and the degree of professionalism associated with it (wine experts, sommeliers), there clearly must be some characteristics that
 serve as strong predictors for what ultimately is defined as a quality wine.
 
-
 The objective of this project is to find out which physiochemical characteristics of wine are the most important predictors of wine quality.
 
 Exploratory data analysis revealed that the distribution of the data across the targets was fairly unbalanced. Thus, we re-encoded the data such that targets less than or equal to 5 were classified as 0 (or “low quality"), and targets greater than 5 were classified as 1 (or "high quality").
@@ -47,11 +46,48 @@ The table below shows the description of 11 physiochemical characteristics used 
 
 ### Usage
 
-You can reproduce our analysis with the following steps:
+You can reproduce our analysis using either Docker or Make with the following steps:
 
-1. Clone this repo, and using the command line, navigate to the root of this project.
+__Docker__
 
-2. Run Makefile by typing following code in the terminal:
+1. Install Docker
+
+    - [Install Docker for Mac](https://docs.docker.com/v17.12/docker-for-mac/install/)
+    - [Install Docker for Windows](https://docs.docker.com/v17.12/docker-for-windows/install/)
+    - [Install Docker for Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/) 
+
+2. Run the following code in Terminal to download the Docker image:
+
+```
+docker pull jc2592/dsci_522_jchen9314_apchiodo
+```
+
+3. Clone this repo from [here](https://github.com/UBC-MDS/DSCI_522_jchen9314_apchiodo), and using the command line, navigate to the root of this project.
+
+4. Type the following code in Terminal to run the analysis:
+
+```
+docker run --rm -v <ABSOLUTE_PATH_OF_REPO_ON_YOUR_COMPUTER>:/home/red_wine_quality_prediction jc2592/dsci_522_jchen9314_apchiodo make -C '/home/red_wine_quality_prediction' all
+
+```
+
+5. Type the following code in Terminal to clean up the analysis:
+
+```
+docker run --rm -v <ABSOLUTE_PATH_OF_REPO_ON_YOUR_COMPUTER>:/home/red_wine_quality_prediction jc2592/dsci_522_jchen9314_apchiodo make -C '/home/red_wine_quality_prediction' clean
+```
+
+__Make__
+
+1. Install Make
+
+    - Install Make for Mac: type `xcode-select --install` in Terminal
+    - [Install Make for Windows](http://gnuwin32.sourceforge.net/packages/make.htm)
+    - Install Make for Ubuntu: type `sudo apt-get install build-essential` in Terminal
+
+2. Clone this repo from [here](https://github.com/UBC-MDS/DSCI_522_jchen9314_apchiodo), and using the command line, navigate to the root of this project.
+
+3. Run [Makefile](https://github.com/UBC-MDS/DSCI_522_jchen9314_apchiodo/blob/master/Makefile) by typing the following code in Terminal:
 
 ```
 # Removes unnecessary files to start the analysis from scratch
@@ -64,7 +100,7 @@ The Makefile creates an entire data analysis pipeline for our red wine quality p
 
 ```
 # step 1. run 01_wine_data_clean.R script: clean data set
-Rscript src/01_wine_data_clean.R data/winequality-red.csv data/cleaned_winequality-red.csv
+Rscript src/01_wine_data_clean.R https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-red.csv_winequality-red.csv
 
 # step 2. run 02_wine_data_viz.R script: wine data visualization
 Rscript src/02_wine_data_viz.R data/cleaned_winequality-red.csv results/figures
@@ -81,21 +117,21 @@ Rscript -e "rmarkdown::render('doc/wine_quality_analysis_report.Rmd')"
 
 The following is the description, expected input and output files of each script we used in this project.
 
-1. 01\_wine\_data\_clean.R
+1. [01\_wine\_data\_clean.R](https://github.com/UBC-MDS/DSCI_522_jchen9314_apchiodo/blob/master/src/01_wine_data_clean.R)
 
     This script imports the raw red wine data set and re-encodes the 'quality' variable to only have two targets(1: "high quality" if the value of quality is greater than 5; otherwise 0: "low quality")
 
     Input:
     
-    - Raw data set: data/winequality-red.csv
+    - Raw data set: https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/
     
     Output: 
         
     - Cleaned data set: data/cleaned_winequality-red.csv
 
-2. 02\_wine\_data\_viz.R
+2. [02\_wine\_data\_viz.R](https://github.com/UBC-MDS/DSCI_522_jchen9314_apchiodo/blob/master/src/02_wine_data_viz.R)
 
-    This script imports the cleaned red wine data set and create a violin plot for the 'alcohol' feature with original classes and with re-encoded classes. Also, it creates a facetted density plot to compare the distribution of re-encoded classes across all features.
+    This script imports the cleaned red wine data set and create a violin plot for the 'alcohol' feature with original classes and with re-encoded classes.
 
     Input: 
        
@@ -104,9 +140,8 @@ The following is the description, expected input and output files of each script
     Outputs:
        
     - A violin plot showing distribution of data on original targets and on re-encoded targets ("low quality", "high quality"; alcohol chosen as arbitrary feature for visualization): eda_data_balance.png
-    - An density plot showing distribution of on re-encoded targets across all features("low quality", "high quality"): eda_all_vars_density.png
 
-3. 03_wine_quality_pred.py
+3. [03\_wine\_quality\_pred.py](https://github.com/UBC-MDS/DSCI_522_jchen9314_apchiodo/blob/master/src/03_wine_quality_pred.py)
 
     This script takes cleaned red wine quality data set, splits the data set into a train(80%) and a test(20%) set, and fits the train set into a decision tree model and calculates the prediction accuracy on the test set. Also, it performs a 5-fold cross-validation to find the best hyper-parameter and presents the importance of each feature used in this model.
 
@@ -121,7 +156,7 @@ The following is the description, expected input and output files of each script
     - Prediction results: results/pred_summary_table.csv
     - Features' importance: results/feature_importance.csv
 
-4. 04_plot_tree_model.py
+4. [04\_plot\_tree\_model.py](https://github.com/UBC-MDS/DSCI_522_jchen9314_apchiodo/blob/master/src/04_plot_tree_model.py)
 
     This script takes a decision tree model and a cross-validation score .csv file as inputs and converts them into a tree model graph and a cross-validation score plot, respectively.
 
@@ -134,6 +169,11 @@ The following is the description, expected input and output files of each script
       
     - Tree model graph: results/figures/tree_model.png
     - Cross-validation score plot: results/figures/cv_score.png
+
+
+Dependency Diagram of the Makefile
+
+![](/img/Makefile.png)
 
 
 ### Dependencies
@@ -151,13 +191,20 @@ The following is the description, expected input and output files of each script
 - Python & Python libraries:
  
     - `Python 3.6.5`
-	- `argparse 1.1`
 	- `numpy 1.14.3`
 	- `pandas 0.23.0`
 	- `sklearn 0.19.1`
-	- `pickle 4.0`
 	- `graphviz 0.10.1`
 	- `matplotplib 2.2.2`
+
+- Docker:
+    
+    - `Docker 17.12`
+
+- Make:
+    
+    - `Make 3.81`
+
 
 ### Report
 The analysis report can be found [here](https://github.com/jchen9314/DSCI_522_jchen9314_apchiodo/blob/master/doc/wine_quality_analysis_report.md).
