@@ -187,7 +187,7 @@ The following is a dependency diagram of the Makefile generated with Docker.
 
 - Python & Python libraries:
  
-  - `Python 3.6.5`
+    - `Python 3.6.5`
 	- `numpy 1.14.3`
 	- `pandas 0.23.0`
 	- `sklearn 0.19.1`
