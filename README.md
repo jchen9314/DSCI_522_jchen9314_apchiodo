@@ -62,7 +62,6 @@ docker pull jc2592/dsci_522_jchen9314_apchiodo
 
 ```
 docker run --rm -v <ABSOLUTE_PATH_OF_REPO_ON_YOUR_COMPUTER>:/home/red_wine_quality_prediction jc2592/dsci_522_jchen9314_apchiodo make -C '/home/red_wine_quality_prediction' all
-
 ```
 
 5. Type the following code in Terminal to clean up the analysis:
@@ -88,7 +87,7 @@ __Make__
 make clean
 
 # Runs all scripts to generate the report
-make all
+make all_local
 ```
 The Makefile creates an entire data analysis pipeline for our red wine quality prediction project by executing the following scripts one by one:
 
@@ -102,11 +101,16 @@ Rscript src/02_wine_data_viz.R data/cleaned_winequality-red.csv results/figures
 # step 3. run 03_wine_quality_pred.py script: wine quality prediction and save results
 python src/03_wine_quality_pred.py data/cleaned_winequality-red.csv results/
 
-# step 4 run 04_plot_tree_model.py script: cross-validation score and decision tree model visualization
+# step 4. run 04_plot_tree_model.py script: cross-validation score and decision tree model visualization
 python src/04_plot_tree_model.py results/ results/figures/
 
 # step 5. knit the final report
 Rscript -e "rmarkdown::render('doc/wine_quality_analysis_report.Rmd')"
+
+# step 6. generate dependency diagram 
+# Note: The diagram will not be generated using Make
+makefile2graph > Makefile.dot
+dot -Tpng Makefile.dot -o Makefile.png
 ```
 
 The following is the description, expected input and output files of each script we used in this project.
@@ -129,7 +133,7 @@ The following is the description, expected input and output files of each script
 
     Input: 
        
-    - Clean data set: data/cleaned_winequality-red.csv
+    - Cleaned data set: data/cleaned_winequality-red.csv
 
     Outputs:
        
@@ -141,7 +145,7 @@ The following is the description, expected input and output files of each script
 
     Input: 
        
-    - Clean data set: data/cleaned_winequality-red.csv
+    - Cleaned data set: data/cleaned_winequality-red.csv
        
     Outputs:
        
@@ -164,11 +168,9 @@ The following is the description, expected input and output files of each script
     - Tree model graph: results/figures/tree_model.png
     - Cross-validation score plot: results/figures/cv_score.png
 
+The following is a dependency diagram of the Makefile generated with Docker.
 
-Dependency Diagram of the Makefile
-
-![](/img/Makefile.png)
-
+![](Makefile.png)
 
 ### Dependencies
 
@@ -185,7 +187,7 @@ Dependency Diagram of the Makefile
 
 - Python & Python libraries:
  
-  - `Python 3.6.5`
+    - `Python 3.6.5`
 	- `numpy 1.14.3`
 	- `pandas 0.23.0`
 	- `sklearn 0.19.1`
