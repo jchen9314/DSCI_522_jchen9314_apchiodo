@@ -10,7 +10,7 @@
 # Input: 
 #      - Clean data set: data/cleaned_winequality-red.csv
 #
-# Outputs:
+# Output:
 #      - A violin plot showing distribution of data on original targets and on
 #        re-encoded targets ("low quality", "high quality"; alcohol chosen as
 #        arbitrary feature for visualization): eda_data_balance.png
@@ -59,20 +59,8 @@ main <- function(){
   
   combine_original_new <- gridExtra::grid.arrange(original_target_violin, new_target_violin, nrow=1)
   
-  # data2 <- data %>%
-  #   select(-quality_old) %>%
-  #   gather(key = "characteristic", value = "value", -quality)
-  
-  # explore_all_density <- ggplot(data2, aes(x = value)) +
-  #   geom_density(aes(group = factor(quality), fill = factor(quality)), alpha = 0.5) +
-  #   facet_wrap(~characteristic, scales = "free") +
-  #   labs(fill = "Quality") +
-  #   theme_bw() +
-  #   theme(axis.title.x = element_blank())
-  
   # save plots
   ggsave(paste0(output_dir, '/eda_data_balance.png'), combine_original_new, width = 11)
-  # ggsave(paste0(output_dir, '/eda_all_vars_density.png'), explore_all_density)
   
 }
 
