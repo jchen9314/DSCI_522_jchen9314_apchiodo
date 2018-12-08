@@ -58,7 +58,7 @@ docker pull jc2592/dsci_522_jchen9314_apchiodo
 
 3. Clone this repo from [here](https://github.com/UBC-MDS/DSCI_522_jchen9314_apchiodo), and using the command line, navigate to the root of this project.
 
-4. Type the following code in Terminal to run the analysis:
+4. Type the following code in Terminal to run the analysis and generate a report with a dependency diagram:
 
 ```
 docker run --rm -v <ABSOLUTE_PATH_OF_REPO_ON_YOUR_COMPUTER>:/home/red_wine_quality_prediction jc2592/dsci_522_jchen9314_apchiodo make -C '/home/red_wine_quality_prediction' all
@@ -78,17 +78,21 @@ __Make__
     - [Install Make for Windows](http://gnuwin32.sourceforge.net/packages/make.htm)
     - Install Make for Ubuntu: type `sudo apt-get install build-essential` in Terminal
 
-2. Clone this repo from [here](https://github.com/UBC-MDS/DSCI_522_jchen9314_apchiodo), and using the command line, navigate to the root of this project.
+2. Ensure all dependecies are installed (See Dependencies section)
 
-3. Run [Makefile](https://github.com/UBC-MDS/DSCI_522_jchen9314_apchiodo/blob/master/Makefile) by typing the following code in Terminal:
+3. Clone this repo from [here](https://github.com/UBC-MDS/DSCI_522_jchen9314_apchiodo), and using the command line, navigate to the root of this project.
+
+4. Run [Makefile](https://github.com/UBC-MDS/DSCI_522_jchen9314_apchiodo/blob/master/Makefile) by typing the following code in Terminal:
 
 ```
-# Removes unnecessary files to start the analysis from scratch
+# removes unnecessary files to start the analysis from scratch
 make clean
 
-# Runs all scripts to generate the report
+# runs all scripts to generate the report without the dependency diagram
+# Note: It will throw an error if you type `make all` with Make.
 make all_local
 ```
+
 The Makefile creates an entire data analysis pipeline for our red wine quality prediction project by executing the following scripts one by one:
 
 ```
@@ -107,8 +111,8 @@ python src/04_plot_tree_model.py results/ results/figures/
 # step 5. knit the final report
 Rscript -e "rmarkdown::render('doc/wine_quality_analysis_report.Rmd')"
 
-# step 6. generate dependency diagram 
-# Note: The diagram will not be generated using Make
+# step 6. generate a dependency diagram 
+# Note: The diagram will be generated using Docker. If you only use Make to run the analysis, please omit this step.
 makefile2graph > Makefile.dot
 dot -Tpng Makefile.dot -o Makefile.png
 ```
@@ -129,13 +133,13 @@ The following is the description, expected input and output files of each script
 
 2. [02\_wine\_data\_viz.R](https://github.com/UBC-MDS/DSCI_522_jchen9314_apchiodo/blob/master/src/02_wine_data_viz.R)
 
-    This script imports the cleaned red wine data set and create a violin plot for the 'alcohol' feature with original classes and with re-encoded classes.
+    This script imports the cleaned red wine data set and creates a violin plot for the 'alcohol' feature with original classes and with re-encoded classes.
 
     Input: 
        
     - Cleaned data set: data/cleaned_winequality-red.csv
 
-    Outputs:
+    Output:
        
     - A violin plot showing distribution of data on original targets and on re-encoded targets ("low quality", "high quality"; alcohol chosen as arbitrary feature for visualization): eda_data_balance.png
 
@@ -193,15 +197,6 @@ The following is a dependency diagram of the Makefile generated with Docker.
 	- `sklearn 0.19.1`
 	- `graphviz 0.10.1`
 	- `matplotplib 2.2.2`
-
-- Docker:
-    
-    - `Docker 17.12`
-
-- Make:
-    
-    - `Make 3.81`
-
 
 ### Report
 The analysis report can be found [here](https://github.com/jchen9314/DSCI_522_jchen9314_apchiodo/blob/master/doc/wine_quality_analysis_report.md).
