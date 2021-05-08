@@ -1,5 +1,7 @@
 ## Red Wine Quality Predictor
 
+[Try it on Heroku](https://prod-quality-predictor.herokuapp.com/)
+
 ![](https://media.giphy.com/media/3oKIP5bAoKJFJNOkgM/giphy.gif)
 
 [source](https://media.giphy.com/media/3oKIP5bAoKJFJNOkgM/giphy.gif)
@@ -200,6 +202,32 @@ The following is a dependency diagram of the Makefile generated with Docker.
 
 ### Report
 The analysis report can be found [here](https://github.com/jchen9314/DSCI_522_jchen9314_apchiodo/blob/master/doc/wine_quality_analysis_report.md).
+
+### Deploy on Heroku
+
+In this project, I deploy app/ to Heroku using git-subtrees.
+
+- Heroku Setup
+
+```
+npm install -g heroku
+heroku login
+heroku git:remote -a <WEB APPLICATION NAME>
+```
+
+- Add Procfile
+Before we deploy the app to Heroku, we need to tell Heroku how to run various pieces of our app. That is function of Procfile. Type the following line in Procfile:
+
+```
+web gunicorn app:app
+```
+
+- Using git-subtree to deploy the app
+```
+git subtree push --prefix path/to/subdirectory heroku master
+```
+In this case, path/to/subdirectory would be app/
+
 
 ### Release versions
 
