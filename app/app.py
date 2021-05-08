@@ -2,6 +2,7 @@ from flask import Flask,request, url_for, redirect, render_template, jsonify
 import pandas as pd
 import joblib
 import numpy as np
+import sklearn
 
 
 app = Flask(__name__)
