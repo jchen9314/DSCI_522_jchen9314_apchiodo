@@ -7,7 +7,7 @@ import numpy as np
 app = Flask(__name__)
 
 # load model
-with open("../results/winequality_pred_model.joblib", 'rb') as model:
+with open("model/winequality_pred_model.joblib", 'rb') as model:
     tree_model = joblib.load(model)
 
 cols = ['alcohol', 
