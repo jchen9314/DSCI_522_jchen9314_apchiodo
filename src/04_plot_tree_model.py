@@ -26,7 +26,8 @@
 
 # import libraries
 import argparse
-import pickle
+# import pickle
+from joblib import load
 import os
 import pandas as pd
 import graphviz
@@ -43,8 +44,8 @@ def main():
     # draw cv score plot
     draw_cv_plot(args.input_file_path, args.output_file_path)
     # draw tree model
-    with open(args.input_file_path + "winequality_pred_model.pkl", 'rb') as model:
-        tree_model = pickle.load(model)
+    with open(args.input_file_path + "winequality_pred_model.joblib", 'rb') as model:
+        tree_model = load(model)
     save_and_show_decision_tree(tree_model)
 
 def save_and_show_decision_tree(model,class_names = ["low quality","high quality"],save_file_prefix = args.output_file_path +"tree_model", **kwargs):

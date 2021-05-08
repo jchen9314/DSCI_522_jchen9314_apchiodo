@@ -29,7 +29,8 @@
 
 # import libraries
 import argparse
-import pickle
+# import pickle
+from joblib import dump
 import os
 import pandas as pd
 import numpy as np
@@ -63,9 +64,6 @@ def main():
     # prediction on test data
     model = DecisionTreeClassifier(max_depth = best_depth, random_state = 62)
     model.fit(X_train, y_train)
-    # save model as .pkl file
-    with open(args.output_file_path + "winequality_pred_model.pkl", "wb") as file_name:
-        pickle.dump(model, file_name)
     # calculate test accuracy
     test_acc = model.score(X_test, y_test)
     # create summary table of the result
@@ -73,6 +71,10 @@ def main():
     create_acc_table(summary_lst)
     # create feature importance table
     create_feature_importance(X_test.columns, model)
+    # retrain the model using all the data and save model as .pkl file
+    model.fit(X, y)
+    with open(args.output_file_path + "winequality_pred_model.joblib", "wb") as file_name:
+        dump(model, file_name)
 
 def write_cv_score(cv_scores_lst):
     """
