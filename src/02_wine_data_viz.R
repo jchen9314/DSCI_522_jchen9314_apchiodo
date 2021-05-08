@@ -8,7 +8,7 @@
 #         'alcohol' feature with original classes and with re-encoded classes.
 #
 # Input: 
-#      - Clean data set: data/cleaned_winequality-red.csv
+#      - db name: WinesDB.db 
 #
 # Output:
 #      - A violin plot showing distribution of data on original targets and on
@@ -19,25 +19,27 @@
 # Dependencies: tidyverse
 # 
 # Arguments: 
-#      - arg1: input_file
+#      - arg1: input_table
 #      - arg2: output_dir
 #
-# Usage: Rscript src/02_wine_data_viz.R data/cleaned_winequality-red.csv results/figures
+# Usage: Rscript src/02_wine_data_viz.R WinesDB.db results/figures
 
 
 # load libraries
 library(tidyverse)
+library(RSQLite)
 
 # read in command line arguments
 args <- commandArgs(trailingOnly = TRUE)
-input_file <- args[1]
+db_name <- args[1]
 output_dir <- args[2]
 
 # define main function
 main <- function(){
-  
+
+  conn <- dbConnect(RSQLite::SQLite(), db_name)
   # read in data
-  data <- read_csv(input_file)
+  data <- dbGetQuery(conn, "SELECT * FROM WineCleanedData")
   
   # create plots
   original_target_violin <- ggplot(data, aes(x = factor(x = quality_old), alcohol)) +

@@ -11,26 +11,27 @@
 #      - Raw data set link: https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-red.csv
 #
 # Output:
-#      - Cleaned data set: data/cleaned_winequality-red.csv
+#      - SQLite db file: WinesDB.db
 #
 # Dependencies: readr, dplyr
 # 
 # Arguments: 
 #      - arg1: input_file
-#      - arg2: output_file
+#      - arg2: db_name
 #
-# Usage: Rscript src/01_wine_data_clean.R https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-red.csv data/cleaned_winequality-red.csv
+# Usage: Rscript src/01_wine_data_clean.R https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-red.csv WinesDB.db
 
 
 # load libraries
 library(readr)
 library(dplyr)
 library(stringr)
+library(RSQLite)
 
 # read in command line arguments
 args <- commandArgs(trailingOnly = TRUE)
 input_file <- args[1]
-output_file <- args[2]
+db_name <- args[2]
 
 # define main function
 main <- function(){
@@ -59,8 +60,12 @@ main <- function(){
     mutate(quality = if_else(quality <= 3, 0, 1)) %>%
     mutate_at(vars(quality, `total sulfur dioxide`), as.integer)
   
-  # save to file
-  write_csv(data, output_file)
+  # create a connection to our new database, WinesDB.db
+  # you can check that the .db file has been created on your working directory
+  conn <- dbConnect(RSQLite::SQLite(), db_name)
+  
+  # dump data to db
+  dbWriteTable(conn, 'WineCleanedData', data)
   
 }
 

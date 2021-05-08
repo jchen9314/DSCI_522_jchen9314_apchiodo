@@ -15,6 +15,7 @@ RUN Rscript -e "install.packages('dplyr')"
 RUN Rscript -e "install.packages('readr')"
 RUN Rscript -e "install.packages('stringr')"
 RUN Rscript -e "install.packages('gridExtra')"
+RUN Rscript -e "install.packages('RSQLite')"
 
 # install Python 3
 RUN apt-get update \

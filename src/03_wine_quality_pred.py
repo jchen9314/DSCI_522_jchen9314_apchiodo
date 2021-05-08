@@ -10,7 +10,7 @@
 #          of each feature used in this model.
 #
 # Input: 
-#      - Clean data set: data/cleaned_winequality-red.csv
+#      - db name: WinesDB.db
 #
 # Outputs:
 #      - Cross-validation score: results/cross_validation_scores.csv
@@ -24,12 +24,11 @@
 #      - arg1: input_file_path
 #      - arg2: output_file_path
 #
-# Usage: python src/03_wine_quality_pred.py data/cleaned_winequality-red.csv results/
+# Usage: python src/03_wine_quality_pred.py WinesDB.db results/
 
 
 # import libraries
 import argparse
-# import pickle
 from joblib import dump
 import os
 import pandas as pd
@@ -37,16 +36,20 @@ import numpy as np
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.model_selection import cross_val_score
+from sqlalchemy import create_engine
 
 # read in command line arguments
 parser = argparse.ArgumentParser()
-parser.add_argument("input_file_path")
+parser.add_argument("db_name")
 parser.add_argument("output_file_path")
 args = parser.parse_args()
 
 def main():
+
+    # connect to db
+    engine = create_engine('sqlite:///'+ args.db_name)
     # read in data
-    wine_quality = pd.read_csv(args.input_file_path)
+    wine_quality = pd.read_sql_query("SELECT * FROM WineCleanedData", con = engine)
     X = wine_quality.drop(["quality","quality_old"], axis = 1)
     y = wine_quality["quality"]
     #  split your data into train:validation sets by 80:20

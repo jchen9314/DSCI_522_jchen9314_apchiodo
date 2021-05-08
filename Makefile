@@ -27,15 +27,15 @@ PREDICTIONS = results/pred_summary_table.csv results/feature_importance.csv
 RESULTS = results/figures/tree_model.png results/figures/cv_score.png
 
 # step 1. run 01_wine_data_clean.R script: clean data set
-data/cleaned_winequality-red.csv: src/01_wine_data_clean.R
-	Rscript src/01_wine_data_clean.R $(DATASET) data/cleaned_winequality-red.csv
+WinesDB.db: src/01_wine_data_clean.R
+	Rscript src/01_wine_data_clean.R $(DATASET) WinesDB.db
 
 # step 2. run 02_wine_data_viz.R script: wine data visualization
-results/figures/eda_data_balance.png: src/02_wine_data_viz.R data/cleaned_winequality-red.csv
+results/figures/eda_data_balance.png: src/02_wine_data_viz.R WinesDB.db
 	Rscript $^ results/figures
 
 # step 3. run 03_wine_quality_pred.py script: wine quality prediction and save results
-$(PREDICTIONS) $(MODEL): src/03_wine_quality_pred.py data/cleaned_winequality-red.csv
+$(PREDICTIONS) $(MODEL): src/03_wine_quality_pred.py WinesDB.db
 	python3 $^ results/
 
 # step 4. run 04_plot_tree_model.py script: cross-validation score and decision tree model visualization
@@ -61,7 +61,6 @@ Makefile.png: Makefile
 #####################################
 
 clean:
-	rm -f data/cleaned_winequality-red.csv
 	rm -f results/figures/*.png
 	rm -f results/*.csv
 	rm -f doc/wine_quality_analysis_report.md
