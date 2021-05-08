@@ -22,7 +22,7 @@ all: doc/wine_quality_analysis_report.md Makefile.png
 #####################################
 
 DATASET = https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-red.csv
-MODEL = results/cross_validation_scores.csv results/winequality_pred_model.pkl
+MODEL = results/cross_validation_scores.csv results/winequality_pred_model.joblib
 PREDICTIONS = results/pred_summary_table.csv results/feature_importance.csv
 RESULTS = results/figures/tree_model.png results/figures/cv_score.png
 
@@ -36,11 +36,11 @@ results/figures/eda_data_balance.png: src/02_wine_data_viz.R data/cleaned_winequ
 
 # step 3. run 03_wine_quality_pred.py script: wine quality prediction and save results
 $(PREDICTIONS) $(MODEL): src/03_wine_quality_pred.py data/cleaned_winequality-red.csv
-	python $^ results/
+	python3 $^ results/
 
 # step 4. run 04_plot_tree_model.py script: cross-validation score and decision tree model visualization
 $(RESULTS): src/04_plot_tree_model.py $(MODEL)
-	python src/04_plot_tree_model.py results/ results/figures/
+	python3 src/04_plot_tree_model.py results/ results/figures/
 
 # step 5. knit the final report
 doc/wine_quality_analysis_report.md: doc/wine_quality_analysis_report.Rmd \
@@ -65,5 +65,5 @@ clean:
 	rm -f results/figures/*.png
 	rm -f results/*.csv
 	rm -f doc/wine_quality_analysis_report.md
-	rm -f results/winequality_pred_model.pkl
+	rm -f results/winequality_pred_model.joblib
 	rm -f Makefile.png
